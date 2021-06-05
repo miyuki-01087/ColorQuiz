@@ -1,0 +1,16 @@
+﻿<Page
+    x:Class="color_test.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:color_test"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Button x:ConnectionId='2' x:Name="btn_G2" Content="二級の問題を始める" Margin="676,415,0,0" VerticalAlignment="Top"                     />
+
+    </Grid>
+</Page>
+
