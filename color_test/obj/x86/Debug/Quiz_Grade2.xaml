@@ -10,6 +10,7 @@
 
     <Grid>
         <RelativePanel x:ConnectionId='2' x:Name="layoutRoot">
+            <RadioButton Content="1" FontFamily="Global Serif"/>
         </RelativePanel>
     </Grid>
 </Page>
