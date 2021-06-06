@@ -9,7 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <RelativePanel x:Name="layoutRoot">
-        </RelativePanel>
+        <RelativePanel x:Name="layoutRoot"/>
     </Grid>
 </Page>

@@ -25,23 +25,27 @@ namespace color_test
     /// </summary>
     public sealed partial class Quiz_Grade2 : Page
     {
+
+        private const int NUM_OPTIONS = 8;
         public Quiz_Grade2()
         {
             this.InitializeComponent();
             int numOfColors = InitializeNameMap();
             InitializeRgbArray(numOfColors);
             InitializeVoctor();
-            for(int i=0; i<8; i++)
+            for(int i=0; i< NUM_OPTIONS; i++)
             {
-                showRectangle(i, i);
-                InitializeText(i, i);
+                showRectangle();
+                InitializeColorNameDescription();
+                InitializeRadioButton();
             }
         }
 
         Dictionary<int, string> nameMap = new Dictionary<int, string>();
         Dictionary<int, byte[]> rgbMap = new Dictionary<int, byte[]>();
-        Vector3[] positionVector = new Vector3[8];
-        TextBlock[] boxColorName = new TextBlock[8];
+        Vector3[] positionVectorForRectangle = new Vector3[NUM_OPTIONS];
+        TextBlock[] boxColorName = new TextBlock[NUM_OPTIONS];
+        RadioButton[] optionButtons = new RadioButton[NUM_OPTIONS];
 
         private int InitializeNameMap()
         {
@@ -70,51 +74,58 @@ namespace color_test
 
         private void InitializeVoctor()
         {
-            positionVector[0] = new Vector3(50.0f, 350.0f, 0.0f );
-            positionVector[1] = new Vector3(303.0f, 350.0f, 0.0f);
-            positionVector[2] = new Vector3(556.0f, 350.0f, 0.0f);
-            positionVector[3] = new Vector3(810.0f, 350.0f, 0.0f);
-            positionVector[4] = new Vector3(50.0f, 550.0f, 0.0f);
-            positionVector[5] = new Vector3(303.0f, 550.0f, 0.0f);
-            positionVector[6] = new Vector3(556.0f, 550.0f, 0.0f);
-            positionVector[7] = new Vector3(810.0f, 550.0f, 0.0f);
+            positionVectorForRectangle[0] = new Vector3(50.0f, 350.0f, 0.0f );
+            positionVectorForRectangle[1] = new Vector3(303.0f, 350.0f, 0.0f);
+            positionVectorForRectangle[2] = new Vector3(556.0f, 350.0f, 0.0f);
+            positionVectorForRectangle[3] = new Vector3(810.0f, 350.0f, 0.0f);
+            positionVectorForRectangle[4] = new Vector3(50.0f, 550.0f, 0.0f);
+            positionVectorForRectangle[5] = new Vector3(303.0f, 550.0f, 0.0f);
+            positionVectorForRectangle[6] = new Vector3(556.0f, 550.0f, 0.0f);
+            positionVectorForRectangle[7] = new Vector3(810.0f, 550.0f, 0.0f);
         }
 
-        private void InitializeText(int offset_color, int offset_postion)
+        private void InitializeColorNameDescription()
         {
-            boxColorName[offset_postion] = new TextBlock();
-            boxColorName[offset_postion].Text = nameMap[offset_color];
-            Vector3 positionColorName = positionVector[offset_postion];
-            positionColorName += new Vector3(60.0f, 100.0f, 1.0f);
-            boxColorName[offset_postion].Translation = positionColorName;
-            boxColorName[offset_postion].FontSize = 20;
-            layoutRoot.Children.Add(boxColorName[offset_postion]);
+            for (int i = 0; i < NUM_OPTIONS; i++)
+            {
+                boxColorName[i] = new TextBlock();
+                boxColorName[i].Text = nameMap[i];
+                Vector3 positionRectangle = positionVectorForRectangle[i];
+                boxColorName[i].Translation = positionRectangle + new Vector3(60.0f, 100.0f, 1.0f);
+                boxColorName[i].FontSize = 20;
+                layoutRoot.Children.Add(boxColorName[i]);
+            }
         }
 
-        private void showRectangle(int offset_color, int offset_postion)
+        private void InitializeRadioButton()
         {
-            Rectangle r = new Rectangle();
-            SolidColorBrush color_01 = new SolidColorBrush();
-            byte[] tmp = rgbMap[offset_color];
-            color_01.Color = Color.FromArgb(255, tmp[0], tmp[1], tmp[2]);
-            r.Fill = color_01;
-            r.Translation = positionVector[offset_postion];
-            r.Width = 150;
-            r.Height = 100;
-            layoutRoot.Children.Add(r);
+            for(int i=0; i<NUM_OPTIONS; i++)
+            {
+                optionButtons[i] = new RadioButton();
+                Vector3 positionRectangle = positionVectorForRectangle[i];
+                optionButtons[i].Translation = positionRectangle + new Vector3(65.0f, -35.0f, 1.0f);
+                optionButtons[i].GroupName = "Options";
+                optionButtons[i].Content = (i+1);
+                optionButtons[i].FontSize = 20;
+                optionButtons[i].FontFamily = new FontFamily("Global Serif");
+                layoutRoot.Children.Add(optionButtons[i]);
+            }
         }
 
-
-        private void showOptions()
+        private void showRectangle()
         {
-            Rectangle r = new Rectangle();
-            Windows.UI.Xaml.Media.SolidColorBrush color_01 = new Windows.UI.Xaml.Media.SolidColorBrush();
-            color_01.Color = Color.FromArgb(255, 100, 100, 200);
-            r.Fill = color_01;
-            r.Translation = new Vector3(10.0f, 100.0f, 0.0f);
-            r.Width = 200;
-            r.Height = 100;
-            layoutRoot.Children.Add(r);
+            for (int i = 0; i < NUM_OPTIONS; i++)
+            {
+                Rectangle optionRectangle = new Rectangle();
+                SolidColorBrush color_01 = new SolidColorBrush();
+                optionRectangle.Fill = color_01;
+                byte[] tmp = rgbMap[i];
+                color_01.Color = Color.FromArgb(255, tmp[0], tmp[1], tmp[2]);
+                optionRectangle.Translation = positionVectorForRectangle[i];
+                optionRectangle.Width = 150;
+                optionRectangle.Height = 100;
+                layoutRoot.Children.Add(optionRectangle);
+            }
         }
     }
 }
