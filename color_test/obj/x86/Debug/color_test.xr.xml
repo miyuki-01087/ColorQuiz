@@ -17,13 +17,7 @@
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="color_test.MainPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
-      <RootProperty Name="Children" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
-      <RootProperty Name="Content" />
-      <RootProperty Name="FontFamily" />
-    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel" />
     <RootType FullName="color_test.Quiz_Grade2" />
   </Roots.RootTypes>
 </Roots>
