@@ -13,14 +13,19 @@ namespace color_test
     class VectorData
     {
         private Vector3[] positionVectorForRectangle = null;
+        private Vector3 positionVectorForDescription;
+        private Vector3 positionVectorForAnswerColorName;
+
         public VectorData(int NUM_OPTIONS)
         {
-            InitializeVoctorForRectangle(NUM_OPTIONS);
+            InitializeVectorForRectangle(NUM_OPTIONS);
+            InitializeVectorForDescription();
+            InitializeVectorForColorNameOfQuiz();
         }
         /// <summary>
         /// 各長方形の位置を示したベクトルを初期化する
         /// </summary>
-        private void InitializeVoctorForRectangle(int NUM_OPTIONS)
+        private void InitializeVectorForRectangle(int NUM_OPTIONS)
         {
             positionVectorForRectangle = new Vector3[NUM_OPTIONS];
             positionVectorForRectangle[0] = new Vector3(50.0f, 350.0f, 0.0f);
@@ -34,6 +39,22 @@ namespace color_test
         }
 
         /// <summary>
+        /// 問題文の位置ベクトルを初期化する
+        /// </summary>
+        private void InitializeVectorForDescription()
+        {
+            positionVectorForDescription = new Vector3(50.0f, 20.0f, 1.0f);
+        }
+
+        /// <summary>
+        /// 問題の色名の位置ベクトルを初期化する
+        /// </summary>
+        private void InitializeVectorForColorNameOfQuiz()
+        {
+            positionVectorForAnswerColorName = new Vector3(100.0f, 100.0f, 1.0f);
+        }
+
+        /// <summary>
         /// 長方形の位置を取得する
         /// </summary>
         /// <param name="offset">位置を返す長方形の番号</param>
@@ -43,5 +64,22 @@ namespace color_test
             return positionVectorForRectangle[offset];
         }
 
+        /// <summary>
+        /// 問題文の位置を取得する
+        /// </summary>
+        /// <returns>問題文の位置ベクトル</returns>
+        public Vector3 GetpositionVectorForDescription()
+        {
+            return positionVectorForDescription;
+        }
+
+        /// <summary>
+        /// 問題の色名の位置を取得する
+        /// </summary>
+        /// <returns>問題の色名の位置ベクトル</returns>
+        public Vector3 GetVectorForAnswerColorName()
+        {
+            return positionVectorForAnswerColorName;
+        }
     }
 }

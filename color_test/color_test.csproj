@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ColorDataG2.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -126,6 +127,7 @@
     <Compile Include="Quiz_Grade2.xaml.cs">
       <DependentUpon>Quiz_Grade2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VectorData.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 using Windows.UI;
 using System.Numerics;
+using System.Windows;
 
 // 空白ページの項目テンプレートについては、https://go.microsoft.com/fwlink/?LinkId=234238 を参照してください
 
@@ -28,12 +29,13 @@ namespace color_test
         private const int NUM_OPTIONS = 8;
         ColorDataG2 colordata;
         VectorData vectordata;
+        int quizCounter = 0;
 
         public Quiz_Grade2()
         {
             this.InitializeComponent();
             InitializeForQuiz();
-            showQuiz(0); // 1問目を出題
+            ShowQuiz(0); // 1問目を出題
         }
 
         /// <summary>
@@ -45,13 +47,15 @@ namespace color_test
             vectordata = new VectorData(NUM_OPTIONS);
             int numOfColors = colordata.GetnameMapLength();
             InitializeRadioButton();
+            InitializeQuizDescription();
+            InitializeColorNameOfQuiz(0);
         }
 
         /// <summary>
-        /// クイズを表示する
+        /// 長方形と色名を表示する
         /// </summary>
         /// <param name="answerNum">この問いの答え</param>
-        private void showQuiz(int answerNum)
+        private void ShowQuiz(int answerNum)
         {
             int[] optionsArray = new int[NUM_OPTIONS];
             InitializeOptionsArray(optionsArray);
@@ -135,6 +139,32 @@ namespace color_test
                 buttun.FontFamily = new FontFamily("Global Serif");
                 layoutRoot.Children.Add(buttun);
             }
+        }
+
+        /// <summary>
+        /// 問題文を初期化して表示する
+        /// </summary>
+        private void InitializeQuizDescription()
+        {
+            TextBlock descriptionBlock = new TextBlock();
+            descriptionBlock.Text = "以下の選択肢から、色名に合致するものを選択してください。";
+            descriptionBlock.FontSize = 25;
+            descriptionBlock.Translation = vectordata.GetpositionVectorForDescription();
+            layoutRoot.Children.Add(descriptionBlock);
+        }
+
+        /// <summary>
+        /// 答えを表示する
+        /// </summary>
+        /// <param name="answerNum">答えの番号</param>
+        private void InitializeColorNameOfQuiz(int answerNum)
+        {
+            TextBlock answerColorNameBlock = new TextBlock();
+            answerColorNameBlock.Text = "(" + (answerNum + 1) + ")";
+            answerColorNameBlock.Text += colordata.GetnameMapValue(answerNum);
+            answerColorNameBlock.FontSize = 30;
+            answerColorNameBlock.Translation = vectordata.GetVectorForAnswerColorName();
+            layoutRoot.Children.Add(answerColorNameBlock);
         }
 
         /// <summary>
