@@ -15,35 +15,53 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 using Windows.UI;
 using System.Numerics;
+using System.Windows;
 
 // 空白ページの項目テンプレートについては、https://go.microsoft.com/fwlink/?LinkId=234238 を参照してください
 
 namespace color_test
 {
     /// <summary>
-    /// それ自体で使用できる空白ページまたはフレーム内に移動できる空白ページ。
+    /// 色彩検定二級のクイズを提供するクラス
     /// </summary>
     public sealed partial class Quiz_Grade2 : Page
     {
-
         private const int NUM_OPTIONS = 8;
-        Dictionary<int, string> nameMap = new Dictionary<int, string>();
-        Dictionary<int, byte[]> rgbMap = new Dictionary<int, byte[]>();
-        Vector3[] positionVectorForRectangle = new Vector3[NUM_OPTIONS];
-        TextBlock[] boxColorName = new TextBlock[NUM_OPTIONS];
-        RadioButton[] optionButtons = new RadioButton[NUM_OPTIONS];
+        ColorDataG2 colordata;
+        VectorData vectordata;
+        int quizCounter = 0;
+
         public Quiz_Grade2()
         {
             this.InitializeComponent();
-            int numOfColors = InitializeNameMap();
-            InitializeRgbArray(numOfColors);
-            InitializeVoctorForRectangle();
+            InitializeForQuiz();
+            ShowQuiz(0); // 1問目を出題
+        }
+
+        /// <summary>
+        /// ボタンと選択肢を初期化する
+        /// </summary>
+        private void InitializeForQuiz()
+        {
+            colordata = new ColorDataG2(NUM_OPTIONS);
+            vectordata = new VectorData(NUM_OPTIONS);
+            int numOfColors = colordata.GetnameMapLength();
             InitializeRadioButton();
+            InitializeQuizDescription();
+            InitializeColorNameOfQuiz(0);
+        }
+
+        /// <summary>
+        /// 長方形と色名を表示する
+        /// </summary>
+        /// <param name="answerNum">この問いの答え</param>
+        private void ShowQuiz(int answerNum)
+        {
             int[] optionsArray = new int[NUM_OPTIONS];
             InitializeOptionsArray(optionsArray);
             for (int i = 0; i < NUM_OPTIONS; i++)
             {
-                optionsArray[i] = GetColorOffset(optionsArray);
+                optionsArray[i] = GetRandomColorOffset(optionsArray);
                 ShowRectangle(i, optionsArray[i]);
             }
             ShowColorNameDescription(optionsArray);
@@ -52,133 +70,119 @@ namespace color_test
         /// <summary>
         /// 与えられた配列のすべての要素を-1で初期化する
         /// </summary>
+        /// <param name="array">初期化対象の配列</param>
         private void InitializeOptionsArray(int[] array)
         {
-            for(int i=0; i<NUM_OPTIONS; i++)
+            for(int i=0; i< array.Length; i++)
             {
                 array[i] = -1;
             }
         }
 
         /// <summary>
-        /// 0以上arrayLength未満で与えられた配列に存在しない値を返す
+        /// 0以上arrayLength未満で引数の配列内で重複しない値を返す
         /// </summary>
-        private int GetColorOffset(int[] optionsArray)
+        /// <param name="optionsArray">選択肢の番号を格納した配列</param>
+        /// <returns>選択肢の番号</returns>
+        private int GetRandomColorOffset(int[] optionsArray)
         {
             Random rand = new Random();
-            int tmp = 0;
+            int nextOption;
             bool isDuplicated;
             do
             {
                 isDuplicated = false;
-                tmp = rand.Next(NUM_OPTIONS);
+                nextOption = rand.Next(NUM_OPTIONS);
                 for (int i = 0; i < optionsArray.Length; i++)
                 {
-                    if (optionsArray[i] == tmp)
+                    if (optionsArray[i] == nextOption)
                     {
                         isDuplicated = true;
                     }
                 }
             } while (isDuplicated);
-                return tmp;
-        }
-
-        /// <summary>
-        /// 連番と色名の辞書を初期化する
-        /// </summary>
-        private int InitializeNameMap()
-        {
-            nameMap.Add(0, "赤");
-            nameMap.Add(1, "青");
-            nameMap.Add(2, "黄色");
-            nameMap.Add(3, "緑");
-            nameMap.Add(4, "黄緑");
-            nameMap.Add(5, "橙");
-            nameMap.Add(6, "水色");
-            nameMap.Add(7, "茶色");
-            return nameMap.Count();
-        }
-
-        /// <summary>
-        /// 連番と色のRGBの辞書を初期化する
-        /// </summary>
-        private void InitializeRgbArray(int Length)
-        {
-            rgbMap.Add(0, new byte[] { 200, 100, 100 });
-            rgbMap.Add(1, new byte[] { 100, 100, 200 });
-            rgbMap.Add(2, new byte[] { 200, 200, 100 });
-            rgbMap.Add(3, new byte[] { 100, 200, 100 });
-            rgbMap.Add(4, new byte[] { 150, 200, 100 });
-            rgbMap.Add(5, new byte[] { 200, 120, 100 });
-            rgbMap.Add(6, new byte[] { 200, 200, 250 });
-            rgbMap.Add(7, new byte[] { 100, 30, 30 });
-        }
-
-        /// <summary>
-        /// 各長方形の位置を示したベクトルを初期化する
-        /// </summary>
-        private void InitializeVoctorForRectangle()
-        {
-            positionVectorForRectangle[0] = new Vector3(50.0f, 350.0f, 0.0f );
-            positionVectorForRectangle[1] = new Vector3(303.0f, 350.0f, 0.0f);
-            positionVectorForRectangle[2] = new Vector3(556.0f, 350.0f, 0.0f);
-            positionVectorForRectangle[3] = new Vector3(810.0f, 350.0f, 0.0f);
-            positionVectorForRectangle[4] = new Vector3(50.0f, 550.0f, 0.0f);
-            positionVectorForRectangle[5] = new Vector3(303.0f, 550.0f, 0.0f);
-            positionVectorForRectangle[6] = new Vector3(556.0f, 550.0f, 0.0f);
-            positionVectorForRectangle[7] = new Vector3(810.0f, 550.0f, 0.0f);
+                return nextOption;
         }
 
         /// <summary>
         /// 色名のキャプションを表示する
         /// </summary>
+        /// <param name="optionsArray">選択肢を格納した配列</param>
         private void ShowColorNameDescription(int[] optionsArray)
         {
             for (int i = 0; i < NUM_OPTIONS; i++)
             {
                 int colorOffset = optionsArray[i];
-                boxColorName[i] = new TextBlock();
-                boxColorName[i].Text = nameMap[colorOffset];
-                Vector3 positionRectangle = positionVectorForRectangle[i];
-                boxColorName[i].Translation = positionRectangle + new Vector3(60.0f, 100.0f, 1.0f);
-                boxColorName[i].FontSize = 20;
-                layoutRoot.Children.Add(boxColorName[i]);
+                TextBlock textBlock = new TextBlock();
+                textBlock.Text = colordata.GetnameMapValue(colorOffset);
+                Vector3 positionRectangle = vectordata.GetpositionVectorForRectangle(i);
+                textBlock.Translation = positionRectangle + new Vector3(60.0f, 100.0f, 1.0f);
+                textBlock.FontSize = 20;
+                layoutRoot.Children.Add(textBlock);
             }
         }
 
         /// <summary>
         /// ラジオボタンと1~8の連番を表示する
+        /// 位置は長方形の位置から相対的に決める
         /// </summary>
         private void InitializeRadioButton()
         {
-            for(int i=0; i<NUM_OPTIONS; i++)
+            for (int i=0; i<NUM_OPTIONS; i++)
             {
-                optionButtons[i] = new RadioButton();
-                Vector3 positionRectangle = positionVectorForRectangle[i];
-                optionButtons[i].Translation = positionRectangle + new Vector3(65.0f, -35.0f, 1.0f);
-                optionButtons[i].GroupName = "Options";
-                optionButtons[i].Content = (i+1);
-                optionButtons[i].FontSize = 20;
-                optionButtons[i].FontFamily = new FontFamily("Global Serif");
-                layoutRoot.Children.Add(optionButtons[i]);
+                RadioButton buttun = new RadioButton();
+                Vector3 positionRectangle = vectordata.GetpositionVectorForRectangle(i);
+                buttun.Translation = positionRectangle + new Vector3(65.0f, -35.0f, 1.0f);
+                buttun.GroupName = "Options";
+                buttun.Content = (i+1);
+                buttun.FontSize = 20;
+                buttun.FontFamily = new FontFamily("Global Serif");
+                layoutRoot.Children.Add(buttun);
             }
+        }
+
+        /// <summary>
+        /// 問題文を初期化して表示する
+        /// </summary>
+        private void InitializeQuizDescription()
+        {
+            TextBlock descriptionBlock = new TextBlock();
+            descriptionBlock.Text = "以下の選択肢から、色名に合致するものを選択してください。";
+            descriptionBlock.FontSize = 25;
+            descriptionBlock.Translation = vectordata.GetpositionVectorForDescription();
+            layoutRoot.Children.Add(descriptionBlock);
+        }
+
+        /// <summary>
+        /// 答えを表示する
+        /// </summary>
+        /// <param name="answerNum">答えの番号</param>
+        private void InitializeColorNameOfQuiz(int answerNum)
+        {
+            TextBlock answerColorNameBlock = new TextBlock();
+            answerColorNameBlock.Text = "(" + (answerNum + 1) + ")";
+            answerColorNameBlock.Text += colordata.GetnameMapValue(answerNum);
+            answerColorNameBlock.FontSize = 30;
+            answerColorNameBlock.Translation = vectordata.GetVectorForAnswerColorName();
+            layoutRoot.Children.Add(answerColorNameBlock);
         }
 
         /// <summary>
         /// 長方形を表示する。長方形の色オフセットと位置オフセットを引数にとる。
         /// </summary>
+        /// <param name="colorOffset">選択肢の番号</param>
+        /// <param name="optionOffset">色を示す番号</param>
         private void ShowRectangle(int optionOffset, int colorOffset)
         {
             Rectangle optionRectangle = new Rectangle();
             SolidColorBrush color_01 = new SolidColorBrush();
             optionRectangle.Fill = color_01;
-            byte[] tmp = rgbMap[colorOffset];
+            byte[] tmp = colordata.GetrgbMapValue(colorOffset);
             color_01.Color = Color.FromArgb(255, tmp[0], tmp[1], tmp[2]);
-            optionRectangle.Translation = positionVectorForRectangle[optionOffset];
+            optionRectangle.Translation = vectordata.GetpositionVectorForRectangle(optionOffset);
             optionRectangle.Width = 150;
             optionRectangle.Height = 100;
-            layoutRoot.Children.Add(optionRectangle);
-            
+            layoutRoot.Children.Add(optionRectangle);        
         }
     }
 }
