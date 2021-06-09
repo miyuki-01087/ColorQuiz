@@ -27,15 +27,17 @@ namespace color_test
     public sealed partial class Quiz_Grade2 : Page
     {
         private const int NUM_OPTIONS = 8;
-        ColorDataG2 colordata;
-        VectorData vectordata;
-        int quizCounter = 0;
+        private ColorDataG2 colordata;
+        private VectorData vectordata;
+        private int[] optionsArray = new int[NUM_OPTIONS];
+        private int quizCounter = 0;
+        private int counterNotDeletedPerAnswer = 0;
 
         public Quiz_Grade2()
         {
             this.InitializeComponent();
             InitializeForQuiz();
-            ShowQuiz(0); // 1問目を出題
+            ShowQuiz(quizCounter); // 1問目を出題
         }
 
         /// <summary>
@@ -45,26 +47,25 @@ namespace color_test
         {
             colordata = new ColorDataG2(NUM_OPTIONS);
             vectordata = new VectorData(NUM_OPTIONS);
-            int numOfColors = colordata.GetnameMapLength();
-            InitializeRadioButton();
             InitializeQuizDescription();
-            InitializeColorNameOfQuiz(0);
+            InitializeRadioButton();
+            int startNumOfQuiz = 0;
+            InitializeColorNameOfQuiz(startNumOfQuiz);
         }
 
         /// <summary>
         /// 長方形と色名を表示する
         /// </summary>
-        /// <param name="answerNum">この問いの答え</param>
+        /// <param name="answerNum">クイズの答え</param>
         private void ShowQuiz(int answerNum)
         {
-            int[] optionsArray = new int[NUM_OPTIONS];
             InitializeOptionsArray(optionsArray);
             for (int i = 0; i < NUM_OPTIONS; i++)
             {
-                optionsArray[i] = GetRandomColorOffset(optionsArray);
+                optionsArray[i] = GetRandomColorOffset();
                 ShowRectangle(i, optionsArray[i]);
             }
-            ShowColorNameDescription(optionsArray);
+            ShowColorNameDescription();
         }
 
         /// <summary>
@@ -82,9 +83,8 @@ namespace color_test
         /// <summary>
         /// 0以上arrayLength未満で引数の配列内で重複しない値を返す
         /// </summary>
-        /// <param name="optionsArray">選択肢の番号を格納した配列</param>
         /// <returns>選択肢の番号</returns>
-        private int GetRandomColorOffset(int[] optionsArray)
+        private int GetRandomColorOffset()
         {
             Random rand = new Random();
             int nextOption;
@@ -107,8 +107,7 @@ namespace color_test
         /// <summary>
         /// 色名のキャプションを表示する
         /// </summary>
-        /// <param name="optionsArray">選択肢を格納した配列</param>
-        private void ShowColorNameDescription(int[] optionsArray)
+        private void ShowColorNameDescription()
         {
             for (int i = 0; i < NUM_OPTIONS; i++)
             {
@@ -130,14 +129,16 @@ namespace color_test
         {
             for (int i=0; i<NUM_OPTIONS; i++)
             {
-                RadioButton buttun = new RadioButton();
+                RadioButton button = new RadioButton();
                 Vector3 positionRectangle = vectordata.GetpositionVectorForRectangle(i);
-                buttun.Translation = positionRectangle + new Vector3(65.0f, -35.0f, 1.0f);
-                buttun.GroupName = "Options";
-                buttun.Content = (i+1);
-                buttun.FontSize = 20;
-                buttun.FontFamily = new FontFamily("Global Serif");
-                layoutRoot.Children.Add(buttun);
+                button.Translation = positionRectangle + new Vector3(65.0f, -35.0f, 1.0f);
+                button.GroupName = "Options";
+                button.Content = (i+1);
+                button.FontSize = 20;
+                button.FontFamily = new FontFamily("Global Serif");
+                button.Click += OnClickRadioButton;
+                layoutRoot.Children.Add(button);
+                counterNotDeletedPerAnswer++;
             }
         }
 
@@ -151,6 +152,7 @@ namespace color_test
             descriptionBlock.FontSize = 25;
             descriptionBlock.Translation = vectordata.GetpositionVectorForDescription();
             layoutRoot.Children.Add(descriptionBlock);
+            counterNotDeletedPerAnswer++;
         }
 
         /// <summary>
@@ -183,6 +185,78 @@ namespace color_test
             optionRectangle.Width = 150;
             optionRectangle.Height = 100;
             layoutRoot.Children.Add(optionRectangle);        
+        }
+
+        /// <summary>
+        /// クイズに答えた際の正誤判定および画面の初期化を行う
+        /// </summary>
+        /// <param name="answerNum">クイズの答えを示すint型</param>
+        private void AnswerQuiz(int answerNum)
+        {
+            bool isCorrect = CheckAnswer(answerNum);
+            ShowisCorrected(isCorrect);
+            DeleteComponents();
+            quizCounter++;
+        }
+
+        /// <summary>
+        /// 正解か不正解かを判定する
+        /// </summary>
+        /// <param name="answerNum">クイズの答えを示すint型</param>
+        /// <returns>正解ならtrue、不正解ならfalseを返す</returns>
+        private bool CheckAnswer(int answerNum)
+        {
+            bool isCorrected = false;
+            if(quizCounter == optionsArray[answerNum])
+            {
+                isCorrected = true;
+            }
+            return isCorrected;
+        }
+
+        /// <summary>
+        /// 正解か不正解かを文字列で表示する
+        /// </summary>
+        /// <param name="isCorrect">正解か不正解かを表すbool型</param>
+        private void ShowisCorrected(bool isCorrect)
+        {
+            TextBlock isCorrectBlock = new TextBlock();
+            if (isCorrect)
+            {
+                isCorrectBlock.Text = "正解！";
+            }
+            else
+            {
+                isCorrectBlock.Text = "不正解！";
+            }
+            isCorrectBlock.Translation = vectordata.GetVectorForisCorrected();
+            isCorrectBlock.FontSize = 30;
+            layoutRoot.Children.Add(isCorrectBlock);
+        }
+
+        /// <summary>
+        /// 次の問題を表示するために長方形および色名と正解の色名を削除する
+        /// </summary>
+        private void DeleteComponents()
+        {
+            int panelLength = layoutRoot.Children.Count;
+            for (int i = panelLength - 1; i >= counterNotDeletedPerAnswer; i--)
+            {
+                layoutRoot.Children.RemoveAt(i);
+            }
+        }
+
+        /// <summary>
+        /// ラジオボタンをクリックしたときに呼ばれる
+        /// </summary>
+        /// <param name="sender">イベントハンドラがアタッチされたオブジェクト</param>
+        /// <param name="e">イベントのデータ</param>
+        private void OnClickRadioButton(object sender, RoutedEventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            radioButton.IsChecked = false;
+            int answerNum = (int)radioButton.Content - 1;
+            AnswerQuiz(answerNum);
         }
     }
 }
