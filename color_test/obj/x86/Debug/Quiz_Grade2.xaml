@@ -8,8 +8,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <RelativePanel x:ConnectionId='2' x:Name="layoutRoot"/>
+    <Grid x:ConnectionId='2'                       >
+        <RelativePanel x:ConnectionId='3' x:Name="layoutRoot"/>
     </Grid>
 </Page>
 
