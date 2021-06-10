@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Shapes;
 using Windows.UI;
 using System.Numerics;
 using System.Windows;
+using Windows.System;
 
 // 空白ページの項目テンプレートについては、https://go.microsoft.com/fwlink/?LinkId=234238 を参照してください
 
@@ -32,6 +33,7 @@ namespace color_test
         private int[] optionsArray = new int[NUM_OPTIONS];
         private int quizCounter = 0;
         private int counterNotDeletedPerAnswer = 0;
+        private RadioButton checkedButton;
 
         public Quiz_Grade2()
         {
@@ -41,7 +43,7 @@ namespace color_test
         }
 
         /// <summary>
-        /// ボタンと選択肢を初期化する
+        /// 選択肢を初期化して、問題文と答えをする
         /// </summary>
         private void InitializeForQuiz()
         {
@@ -49,8 +51,7 @@ namespace color_test
             vectordata = new VectorData(NUM_OPTIONS);
             InitializeQuizDescription();
             InitializeRadioButton();
-            int startNumOfQuiz = 0;
-            InitializeColorNameOfQuiz(startNumOfQuiz);
+            InitializeColorNameOfQuiz(quizCounter);
         }
 
         /// <summary>
@@ -65,7 +66,6 @@ namespace color_test
                 optionsArray[i] = GetRandomColorOffset();
                 ShowRectangle(i, optionsArray[i]);
             }
-            ShowColorNameDescription();
         }
 
         /// <summary>
@@ -195,9 +195,10 @@ namespace color_test
         {
             bool isCorrect = CheckAnswer(answerNum);
             ShowisCorrected(isCorrect);
-            DeleteComponents();
+            ShowColorNameDescription();
             quizCounter++;
         }
+
 
         /// <summary>
         /// 正解か不正解かを判定する
@@ -229,6 +230,7 @@ namespace color_test
             {
                 isCorrectBlock.Text = "不正解！";
             }
+            isCorrectBlock.Text += "(エンターキーで次の問題を表示)";
             isCorrectBlock.Translation = vectordata.GetVectorForisCorrected();
             isCorrectBlock.FontSize = 30;
             layoutRoot.Children.Add(isCorrectBlock);
@@ -254,9 +256,24 @@ namespace color_test
         private void OnClickRadioButton(object sender, RoutedEventArgs e)
         {
             RadioButton radioButton = (RadioButton)sender;
-            radioButton.IsChecked = false;
+            checkedButton = radioButton;
             int answerNum = (int)radioButton.Content - 1;
             AnswerQuiz(answerNum);
+        }
+
+        public void OnDownAnyKey(object sender, KeyRoutedEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case VirtualKey.Enter:
+                    DeleteComponents();
+                    checkedButton.IsChecked = false;
+                    InitializeColorNameOfQuiz(quizCounter);
+                    ShowQuiz(quizCounter); // 1問目を出題
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
