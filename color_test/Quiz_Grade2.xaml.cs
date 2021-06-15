@@ -32,6 +32,8 @@ namespace color_test
         private VectorData vectordata;
         private int[] optionsArray = new int[NUM_OPTIONS];
         private int quizCounter = 0;
+        private int correctCounter = 0;
+        TextBlock answerStatusBlock = new TextBlock();
         private int counterNotDeletedPerAnswer = 0;
         private RadioButton checkedButton;
 
@@ -51,6 +53,7 @@ namespace color_test
             vectordata = new VectorData(NUM_OPTIONS);
             InitializeQuizDescription();
             InitializeRadioButton();
+            InitializeAnswerStatus();
             InitializeColorNameOfQuiz(quizCounter);
         }
 
@@ -78,6 +81,20 @@ namespace color_test
             {
                 array[i] = -1;
             }
+        }
+
+        /// <summary>
+        /// 回答状況の説明文を初期化する
+        /// </summary>
+        private void InitializeAnswerStatus()
+        {
+            answerStatusBlock.Text += "回答状況：";
+            answerStatusBlock.Text += colordata.GetnameMapLength()+"問中 "+(quizCounter+1) + "問目";
+            answerStatusBlock.Text += "　"+correctCounter+"問正解";
+            answerStatusBlock.FontSize = 25;
+            answerStatusBlock.Translation = vectordata.GetpositionVectorForAnswerStatus();
+            layoutRoot.Children.Add(answerStatusBlock);
+            counterNotDeletedPerAnswer++;
         }
 
         /// <summary>
@@ -165,7 +182,7 @@ namespace color_test
             answerColorNameBlock.Text = "(" + (answerNum + 1) + ")";
             answerColorNameBlock.Text += colordata.GetnameMapValue(answerNum);
             answerColorNameBlock.FontSize = 30;
-            answerColorNameBlock.Translation = vectordata.GetVectorForAnswerColorName();
+            answerColorNameBlock.Translation = vectordata.GetpositionVectorForAnswerColorName();
             layoutRoot.Children.Add(answerColorNameBlock);
         }
 
@@ -195,10 +212,33 @@ namespace color_test
         {
             bool isCorrect = CheckAnswer(answerNum);
             ShowisCorrected(isCorrect);
+            UpdatecorrectCounter(isCorrect);
+            UpdateAnswerStatus();
             ShowColorNameDescription();
             quizCounter++;
         }
 
+        /// <summary>
+        /// 回答状況の説明文を更新する
+        /// </summary>
+        private void UpdateAnswerStatus()
+        {
+            answerStatusBlock.Text = "回答状況：";
+            answerStatusBlock.Text += colordata.GetnameMapLength() + "問中 " + (quizCounter + 1) + "問目";
+            answerStatusBlock.Text += "　" + correctCounter + "問正解";
+        }
+
+        /// <summary>
+        /// 問題に正解したなら、正解カウンターをインクリメントする
+        /// </summary>
+        /// <param name="isCorrect">問題に正解したかどうか</param>
+        private void UpdatecorrectCounter(bool isCorrect)
+        {
+            if (isCorrect)
+            {
+                correctCounter++;
+            }
+        }
 
         /// <summary>
         /// 正解か不正解かを判定する
@@ -231,7 +271,7 @@ namespace color_test
                 isCorrectBlock.Text = "不正解！";
             }
             isCorrectBlock.Text += "(エンターキーで次の問題を表示)";
-            isCorrectBlock.Translation = vectordata.GetVectorForisCorrected();
+            isCorrectBlock.Translation = vectordata.GetpositionVectorForisCorrected();
             isCorrectBlock.FontSize = 30;
             layoutRoot.Children.Add(isCorrectBlock);
         }
@@ -261,6 +301,11 @@ namespace color_test
             AnswerQuiz(answerNum);
         }
 
+        /// <summary>
+        /// キー入力を処理する
+        /// </summary>
+        /// <param name="sender">イベントハンドラがアタッチされたオブジェクト</param>
+        /// <param name="e">イベントのデータ</param>
         public void OnDownAnyKey(object sender, KeyRoutedEventArgs e)
         {
             switch (e.Key)
@@ -269,6 +314,7 @@ namespace color_test
                     DeleteComponents();
                     checkedButton.IsChecked = false;
                     InitializeColorNameOfQuiz(quizCounter);
+                    UpdateAnswerStatus();
                     ShowQuiz(quizCounter); // 1問目を出題
                     break;
                 default:
