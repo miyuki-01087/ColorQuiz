@@ -15,7 +15,6 @@ namespace color_test
         private Vector3[] positionVectorForRectangle = null;
         private Vector3 positionVectorForDescription;
         private Vector3 positionVectorForAnswerColorName;
-        private Vector3 positionVectorForisCorrected;
         private Vector3 positionVectorForAnswerStatus;
 
         public VectorData(int NUM_OPTIONS)
@@ -23,7 +22,6 @@ namespace color_test
             InitializeVectorForRectangle(NUM_OPTIONS);
             InitializeVectorForDescription();
             InitializeVectorForColorNameOfQuiz();
-            InitializeVectorForisCorrected();
             InitializepositionVectorForAnswerStatus();
         }
         /// <summary>
@@ -55,15 +53,7 @@ namespace color_test
         /// </summary>
         private void InitializeVectorForColorNameOfQuiz()
         {
-            positionVectorForAnswerColorName = new Vector3(100.0f, 250.0f, 1.0f);
-        }
-
-        /// <summary>
-        /// 正解/不正解の位置ベクトルを初期化する
-        /// </summary>
-        private void InitializeVectorForisCorrected()
-        {
-            positionVectorForisCorrected = new Vector3(200.0f, 250.0f, 1.0f);
+            positionVectorForAnswerColorName = new Vector3(50.0f, 250.0f, 1.0f);
         }
 
         /// <summary>
@@ -100,15 +90,6 @@ namespace color_test
         public Vector3 GetpositionVectorForAnswerColorName()
         {
             return positionVectorForAnswerColorName;
-        }
-
-        /// <summary>
-        /// 正解/不正解の位置を取得する
-        /// </summary>
-        /// <returns>正解/不正解の位置ベクトル</returns>
-        public Vector3 GetpositionVectorForisCorrected()
-        {
-            return positionVectorForisCorrected;
         }
 
         public Vector3 GetpositionVectorForAnswerStatus()

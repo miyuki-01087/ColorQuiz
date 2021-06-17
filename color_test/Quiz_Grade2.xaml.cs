@@ -34,6 +34,7 @@ namespace color_test
         private int quizCounter = 0;
         private int correctCounter = 0;
         TextBlock answerStatusBlock = new TextBlock();
+        TextBlock answerColorNameBlock = new TextBlock();
         private int counterNotDeletedPerAnswer = 0;
         private RadioButton checkedButton;
 
@@ -194,12 +195,14 @@ namespace color_test
         /// <param name="answerNum">答えの番号</param>
         private void InitializeColorNameOfQuiz(int answerNum)
         {
-            TextBlock answerColorNameBlock = new TextBlock();
             answerColorNameBlock.Text = "(" + (answerNum + 1) + ")";
             answerColorNameBlock.Text += colordata.GetnameMapValue(answerNum);
-            answerColorNameBlock.FontSize = 30;
+            answerColorNameBlock.FontSize = 27;
             answerColorNameBlock.Translation = vectordata.GetpositionVectorForAnswerColorName();
-            layoutRoot.Children.Add(answerColorNameBlock);
+            if(!layoutRoot.Children.Contains(answerColorNameBlock)){
+                layoutRoot.Children.Add(answerColorNameBlock);
+            }
+            counterNotDeletedPerAnswer++;
         }
 
         /// <summary>
@@ -277,19 +280,15 @@ namespace color_test
         /// <param name="isCorrect">正解か不正解かを表すbool型</param>
         private void ShowisCorrected(bool isCorrect)
         {
-            TextBlock isCorrectBlock = new TextBlock();
             if (isCorrect)
             {
-                isCorrectBlock.Text = "正解！";
+                answerColorNameBlock.Text += "　正解！";
             }
             else
             {
-                isCorrectBlock.Text = "不正解！";
+                answerColorNameBlock.Text += "　不正解！";
             }
-            isCorrectBlock.Text += "(エンターキーで次の問題を表示)";
-            isCorrectBlock.Translation = vectordata.GetpositionVectorForisCorrected();
-            isCorrectBlock.FontSize = 30;
-            layoutRoot.Children.Add(isCorrectBlock);
+            answerColorNameBlock.Text += "(エンターキーで次の問題を表示)";
         }
 
         /// <summary>
