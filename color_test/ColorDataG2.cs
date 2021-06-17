@@ -35,6 +35,15 @@ namespace color_test
             nameMap.Add(7, "弁柄色(べんがらいろ)(暗い黄みの赤)");
             nameMap.Add(8, "海老茶(えびちゃ)暗い黄みの赤");
             nameMap.Add(9, "マルーン(暗い赤)");
+            nameMap.Add(10, "チャイニーズレッド(あざやかな黄赤)");
+            nameMap.Add(11, "黄丹(おうに)(つよい黄赤)");
+            nameMap.Add(12, "ローシェンナ(つよい黄赤)");
+            nameMap.Add(13, "桧皮色(ひわだいろ(暗い灰みの黄赤)");
+            nameMap.Add(14, "バーントシェンナ(くすんだ黄赤)");
+            nameMap.Add(15, "タン(くすんだ黄赤)");
+            nameMap.Add(16, "代赭(たいしゃ)(くすんだ黄赤)");
+            nameMap.Add(17, "柑子色(こうじいろ)(明るい黄赤)");
+
         }
 
         /// <summary>
@@ -42,6 +51,7 @@ namespace color_test
         /// </summary>
         private void InitializergbMap()
         {
+            /*  ここからが出題範囲1つめ  */
             rgbMap.Add(0, new byte[] { 244, 179, 194 }); // 鴇色
             rgbMap.Add(1, new byte[] { 226, 147, 153 }); // オールドローズ
             rgbMap.Add(2, new byte[] { 233, 84, 100 }); // 韓紅色
@@ -52,6 +62,52 @@ namespace color_test
             rgbMap.Add(7, new byte[] { 143, 46, 20 }); // 弁柄色
             rgbMap.Add(8, new byte[] { 119, 60, 48 }); // 海老茶
             rgbMap.Add(9, new byte[] { 106, 25, 23 }); // マルーン
+            rgbMap.Add(10, new byte[] { 237, 109, 70 }); // チャイニーズレッド
+            rgbMap.Add(11, new byte[] { 238, 121, 72 }); // 黄丹
+            rgbMap.Add(12, new byte[] { 225, 123, 52 }); // ローシェンナ
+            rgbMap.Add(13, new byte[] { 150, 80, 54 }); // 桧皮色
+            rgbMap.Add(14, new byte[] { 187, 85, 53 }); // バーントシェンナ
+            rgbMap.Add(15, new byte[] { 191, 120, 62 }); // タン
+            rgbMap.Add(16, new byte[] { 187, 85, 32 }); // 代赭
+            rgbMap.Add(17, new byte[] { 246, 173, 73 }); // 柑子色
+            /*  ここからが出題範囲2つめ  */
+        }
+
+        /// <summary>
+        /// 問題の番号を受け取って、出題範囲の始まりを返す
+        /// </summary>
+        /// <param name="quizCounter">問題の番号</param>
+        /// <returns>出題範囲の始まり</returns>
+        public int GetCurrentStartOfColors(int quizCounter)
+        {
+            int startNum;
+            if(quizCounter <= 17)
+            {
+                startNum = 0;
+            }
+            else
+            {
+                startNum = 18;
+            }
+            return startNum;
+        }
+
+        /// <summary>
+        /// 問題の番号を受け取って、出題範囲の終わりを返す
+        /// </summary>
+        /// <param name="quizCounter">問題の番号</param>
+        /// <returns>出題範囲の終わり</returns>
+        public int GetCurrentEndOfColors(int quizCounter)
+        {
+            int endNum;
+            if(quizCounter <= 17)
+            {
+                endNum = 17;
+            }else
+            {
+                endNum = 18; // 後で変更する
+            }
+            return endNum;
         }
 
         /// <summary>
