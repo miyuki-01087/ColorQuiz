@@ -64,9 +64,15 @@ namespace color_test
         private void ShowQuiz(int answerNum)
         {
             InitializeOptionsArray(optionsArray);
+            // はじめに正解の選択肢を配列に入れる
+            int answerPosition = SetAnswerTooptionsArray(quizCounter);
             for (int i = 0; i < NUM_OPTIONS; i++)
             {
-                optionsArray[i] = GetRandomColorOffset();
+                // ダミーの選択肢を配列に入れる
+                if(i != answerPosition)
+                {
+                    optionsArray[i] = GetRandomColorOffset();
+                }
                 ShowRectangle(i, optionsArray[i]);
             }
         }
@@ -97,6 +103,14 @@ namespace color_test
             counterNotDeletedPerAnswer++;
         }
 
+        private int SetAnswerTooptionsArray(int quizCounter)
+        {
+            Random rand = new Random();
+            int answerPosition = rand.Next(NUM_OPTIONS);
+            optionsArray[answerPosition] = quizCounter;
+            return answerPosition;
+        }
+
         /// <summary>
         /// 0以上arrayLength未満で引数の配列内で重複しない値を返す
         /// </summary>
@@ -109,8 +123,10 @@ namespace color_test
             do
             {
                 isDuplicated = false;
-                nextOption = rand.Next(NUM_OPTIONS);
-                for (int i = 0; i < optionsArray.Length; i++)
+                int startOfColors = colordata.GetCurrentStartOfColors(quizCounter);
+                int endOfColors = colordata.GetCurrentEndOfColors(quizCounter);
+                nextOption = rand.Next(startOfColors, endOfColors+1);
+                for (int i = 0; i < NUM_OPTIONS; i++)
                 {
                     if (optionsArray[i] == nextOption)
                     {
