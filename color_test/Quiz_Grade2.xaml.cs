@@ -149,8 +149,10 @@ namespace color_test
                 TextBlock textBlock = new TextBlock();
                 textBlock.Text = colordata.GetnameMapValue(colorOffset);
                 Vector3 positionRectangle = vectordata.GetpositionVectorForRectangle(i);
-                textBlock.Translation = positionRectangle + new Vector3(60.0f, 100.0f, 1.0f);
-                textBlock.FontSize = 20;
+                textBlock.Translation = positionRectangle + new Vector3(-20.0f, 105.0f, 1.0f);
+                textBlock.Width = 190;
+                textBlock.TextAlignment = TextAlignment.Center;
+                textBlock.FontSize = 18;
                 layoutRoot.Children.Add(textBlock);
             }
         }
@@ -196,7 +198,8 @@ namespace color_test
         private void InitializeColorNameOfQuiz(int answerNum)
         {
             answerColorNameBlock.Text = "(" + (answerNum + 1) + ")";
-            answerColorNameBlock.Text += colordata.GetnameMapValue(answerNum);
+            string colorNameIncludesNewLine = colordata.GetnameMapValue(answerNum);
+            answerColorNameBlock.Text += colorNameIncludesNewLine.Replace("\n", "");
             answerColorNameBlock.FontSize = 27;
             answerColorNameBlock.Translation = vectordata.GetpositionVectorForAnswerColorName();
             if(!layoutRoot.Children.Contains(answerColorNameBlock)){

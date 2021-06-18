@@ -25,24 +25,24 @@ namespace color_test
         /// </summary>
         private void InitializeNameMap()
         {
-            nameMap.Add(0, "鴇色(ときいろ)(明るい紫みの赤)");
-            nameMap.Add(1, "オールドローズ(やわらかい赤)");
-            nameMap.Add(2, "韓紅色(からくれない)(あざやかな赤)");
-            nameMap.Add(3, "ポピーレッド(あざやかな赤)");
-            nameMap.Add(4, "テラコッタ(くすんだ黄みの赤)");
-            nameMap.Add(5, "蘇芳(すおう)(くすんだ赤)");
-            nameMap.Add(6, "鳶色(とびいろ)(暗い黄みの赤)");
-            nameMap.Add(7, "弁柄色(べんがらいろ)(暗い黄みの赤)");
-            nameMap.Add(8, "海老茶(えびちゃ)暗い黄みの赤");
-            nameMap.Add(9, "マルーン(暗い赤)");
-            nameMap.Add(10, "チャイニーズレッド(あざやかな黄赤)");
-            nameMap.Add(11, "黄丹(おうに)(つよい黄赤)");
-            nameMap.Add(12, "ローシェンナ(つよい黄赤)");
-            nameMap.Add(13, "桧皮色(ひわだいろ(暗い灰みの黄赤)");
-            nameMap.Add(14, "バーントシェンナ(くすんだ黄赤)");
-            nameMap.Add(15, "タン(くすんだ黄赤)");
-            nameMap.Add(16, "代赭(たいしゃ)(くすんだ黄赤)");
-            nameMap.Add(17, "柑子色(こうじいろ)(明るい黄赤)");
+            nameMap.Add(0, "鴇色(ときいろ)\n(明るい紫みの赤)");
+            nameMap.Add(1, "オールドローズ\n(やわらかい赤)");
+            nameMap.Add(2, "韓紅色(からくれない)\n(あざやかな赤)");
+            nameMap.Add(3, "ポピーレッド\n(あざやかな赤)");
+            nameMap.Add(4, "テラコッタ\n(くすんだ黄みの赤)");
+            nameMap.Add(5, "蘇芳(すおう)\n(くすんだ赤)");
+            nameMap.Add(6, "鳶色(とびいろ)\n(暗い黄みの赤)");
+            nameMap.Add(7, "弁柄色(べんがらいろ)\n(暗い黄みの赤)");
+            nameMap.Add(8, "海老茶(えびちゃ)\n(暗い黄みの赤)");
+            nameMap.Add(9, "マルーン\n(暗い赤)");
+            nameMap.Add(10, "チャイニーズレッド\n(あざやかな黄赤)");
+            nameMap.Add(11, "黄丹(おうに)\n(つよい黄赤)");
+            nameMap.Add(12, "ローシェンナ\n(つよい黄赤)");
+            nameMap.Add(13, "桧皮色(ひわだいろ)\n(暗い灰みの黄赤)");
+            nameMap.Add(14, "バーントシェンナ\n(くすんだ黄赤)");
+            nameMap.Add(15, "タン\n(くすんだ黄赤)");
+            nameMap.Add(16, "代赭(たいしゃ)\n(くすんだ黄赤)");
+            nameMap.Add(17, "柑子色(こうじいろ)\n(明るい黄赤)");
 
         }
 
