@@ -17,6 +17,7 @@ using Windows.UI;
 using System.Numerics;
 using System.Windows;
 using Windows.System;
+using Windows.Media.Core;
 
 // 空白ページの項目テンプレートについては、https://go.microsoft.com/fwlink/?LinkId=234238 を参照してください
 
@@ -33,10 +34,11 @@ namespace color_test
         private int[] optionsArray = new int[NUM_OPTIONS];
         private int quizCounter = 0;
         private int correctCounter = 0;
-        TextBlock answerStatusBlock = new TextBlock();
-        TextBlock answerColorNameBlock = new TextBlock();
+        private TextBlock answerStatusBlock = new TextBlock();
+        private TextBlock answerColorNameBlock = new TextBlock();
         private int counterNotDeletedPerAnswer = 0;
         private RadioButton checkedButton;
+
 
         public Quiz_Grade2()
         {
@@ -234,6 +236,7 @@ namespace color_test
         {
             bool isCorrect = CheckAnswer(answerNum);
             ShowisCorrected(isCorrect);
+            PlaySE(isCorrect);
             UpdatecorrectCounter(isCorrect);
             UpdateAnswerStatus();
             ShowColorNameDescription();
@@ -317,6 +320,26 @@ namespace color_test
             checkedButton = radioButton;
             int answerNum = (int)radioButton.Content - 1;
             AnswerQuiz(answerNum);
+        }
+
+        /// <summary>
+        /// クイズの正誤に合わせたSEを鳴らす
+        /// </summary>
+        /// <param name="isCorrect">クイズの正誤</param>
+        private void PlaySE(bool isCorrect)
+        {
+            MediaPlayerElement player = new MediaPlayerElement();
+            if (isCorrect)
+            {
+                player.Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/ok.mp3"));
+            }
+            else
+            {
+                player.Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/ng.mp3"));
+            }
+            player.Visibility = Visibility.Collapsed;
+            player.AutoPlay = true;
+            layoutRoot.Children.Add(player);
         }
 
         /// <summary>
