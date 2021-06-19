@@ -9,7 +9,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid x:ConnectionId='2'                       >
-        <RelativePanel x:ConnectionId='3' x:Name="layoutRoot"/>
+        <RelativePanel x:ConnectionId='3' x:Name="layoutRoot">
+        </RelativePanel>
     </Grid>
 </Page>
 
