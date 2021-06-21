@@ -25,6 +25,7 @@ namespace color_test
         /// </summary>
         private void InitializeNameMap()
         {
+            /*  ここからが出題範囲1つめ  */
             nameMap.Add(0, "鴇色(ときいろ)\n(明るい紫みの赤)");
             nameMap.Add(1, "オールドローズ\n(やわらかい赤)");
             nameMap.Add(2, "韓紅色(からくれない)\n(あざやかな赤)");
@@ -43,6 +44,19 @@ namespace color_test
             nameMap.Add(15, "タン\n(くすんだ黄赤)");
             nameMap.Add(16, "代赭(たいしゃ)\n(くすんだ黄赤)");
             nameMap.Add(17, "柑子色(こうじいろ)\n(明るい黄赤)");
+            /*  ここからが出題範囲2つめ  */
+            nameMap.Add(18, "琥珀色(こはくいろ)\n(くすんだ赤みの黄)");
+            nameMap.Add(19, "バーントアンバー\n(ごく暗い赤みの黄)");
+            nameMap.Add(20, "ローアンバー\n(暗い黄)");
+            nameMap.Add(21, "アンバー(くすんだ赤みの黄)");
+            nameMap.Add(22, "朽葉色(くちばいろ)\n(灰みの赤みを帯びた黄)");
+            nameMap.Add(23, "鬱金色(うこんいろ)\n(つよい黄)");
+            nameMap.Add(24, "ゴールデンイエロー\n(つよい赤みの黄)");
+            nameMap.Add(25, "ネープルスイエロー\n(つよい黄)");
+            nameMap.Add(26, "ジョンブリアン\n(あざやかな黄)");
+            nameMap.Add(27, "刈安色(かりやすいろ)\n(うすい緑みの黄)");
+            nameMap.Add(28, "エクルベージュ\n(うすい赤みの黄)");
+
 
         }
 
@@ -71,6 +85,18 @@ namespace color_test
             rgbMap.Add(16, new byte[] { 187, 85, 32 }); // 代赭
             rgbMap.Add(17, new byte[] { 246, 173, 73 }); // 柑子色
             /*  ここからが出題範囲2つめ  */
+            rgbMap.Add(18, new byte[] { 191, 120, 58 }); // 琥珀色
+            rgbMap.Add(19, new byte[] { 111, 84, 54 }); // バーントアンバー
+            rgbMap.Add(20, new byte[] { 134, 102, 41 }); // ローアンバー
+            rgbMap.Add(21, new byte[] { 194, 137, 75 }); // アンバー
+            rgbMap.Add(22, new byte[] { 145, 115, 71 }); // 朽葉色
+            rgbMap.Add(23, new byte[] { 250, 191, 20 }); // 鬱金色
+            rgbMap.Add(24, new byte[] { 246, 174, 84 }); // ゴールデンイエロー
+            rgbMap.Add(25, new byte[] { 253, 211, 92 }); // ネープルスイエロー
+            rgbMap.Add(26, new byte[] { 255, 220, 0 }); // ジョンブリアン
+            rgbMap.Add(27, new byte[] { 245, 229, 107 }); // 刈安色
+            rgbMap.Add(28, new byte[] { 246, 229, 204 }); // エクルベージュ
+
         }
 
         /// <summary>
