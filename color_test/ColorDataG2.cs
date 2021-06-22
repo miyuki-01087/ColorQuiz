@@ -56,8 +56,13 @@ namespace color_test
             nameMap.Add(26, "ジョンブリアン\n(あざやかな黄)");
             nameMap.Add(27, "刈安色(かりやすいろ)\n(うすい緑みの黄)");
             nameMap.Add(28, "エクルベージュ\n(うすい赤みの黄)");
-
-
+            nameMap.Add(29, "海松色(みるいろ)\n(暗い灰みの黄緑)");
+            nameMap.Add(30, "シャルトルーズグリーン\n(明るい黄緑)");
+            nameMap.Add(31, "鶸色(ひわいろ)\n(つよい黄緑)");
+            nameMap.Add(32, "黄蘗色(きはだいろ)\n(あかるい黄緑)");
+            nameMap.Add(33, "グラスグリーン\n(くすんだ黄緑)");
+            nameMap.Add(34, "リーフグリーン\n(つよい黄緑)");
+            /*  ここからが出題範囲3つめ  */
         }
 
         /// <summary>
@@ -96,7 +101,13 @@ namespace color_test
             rgbMap.Add(26, new byte[] { 255, 220, 0 }); // ジョンブリアン
             rgbMap.Add(27, new byte[] { 245, 229, 107 }); // 刈安色
             rgbMap.Add(28, new byte[] { 246, 229, 204 }); // エクルベージュ
-
+            rgbMap.Add(29, new byte[] { 114, 109, 64 }); // 海松色
+            rgbMap.Add(30, new byte[] { 217, 227, 103 }); // シャルトルーズグリーン
+            rgbMap.Add(31, new byte[] { 215, 207, 58 }); // 鶸色
+            rgbMap.Add(32, new byte[] { 254, 242, 99 }); // 黄蘗色
+            rgbMap.Add(33, new byte[] { 123, 141, 66 }); // グラスグリーン
+            rgbMap.Add(34, new byte[] { 159, 194, 77 }); // リーフグリーン
+            /*  ここからが出題範囲3つめ  */
         }
 
         /// <summary>
@@ -131,7 +142,7 @@ namespace color_test
                 endNum = 17;
             }else
             {
-                endNum = 18; // 後で変更する
+                endNum = 34;
             }
             return endNum;
         }

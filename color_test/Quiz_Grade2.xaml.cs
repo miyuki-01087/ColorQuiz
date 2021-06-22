@@ -34,6 +34,7 @@ namespace color_test
         private int[] optionsArray = new int[NUM_OPTIONS];
         private int quizCounter = 0;
         private int correctCounter = 0;
+        private int answerNum = 0;
         private TextBlock answerStatusBlock = new TextBlock();
         private TextBlock answerColorNameBlock = new TextBlock();
         private int counterNotDeletedPerAnswer = 0;
@@ -44,7 +45,7 @@ namespace color_test
         {
             this.InitializeComponent();
             InitializeForQuiz();
-            ShowQuiz(quizCounter); // 1問目を出題
+            ShowQuiz(); // 1問目を出題
         }
 
         /// <summary>
@@ -64,11 +65,12 @@ namespace color_test
         /// 長方形と色名を表示する
         /// </summary>
         /// <param name="answerNum">クイズの答え</param>
-        private void ShowQuiz(int answerNum)
+        private void ShowQuiz()
         {
             InitializeOptionsArray(optionsArray);
             // はじめに正解の選択肢を配列に入れる
             int answerPosition = SetAnswerTooptionsArray(quizCounter);
+            answerNum = answerPosition;
             for (int i = 0; i < NUM_OPTIONS; i++)
             {
                 // ダミーの選択肢を配列に入れる
@@ -155,6 +157,12 @@ namespace color_test
                 textBlock.Width = 190;
                 textBlock.TextAlignment = TextAlignment.Center;
                 textBlock.FontSize = 18;
+                if(i == answerNum) // 答えのキャプションだけ赤い字にする
+                {
+                    SolidColorBrush solidBrush = new SolidColorBrush();
+                    solidBrush.Color = Colors.Red;
+                    textBlock.Foreground = solidBrush;
+                }
                 layoutRoot.Children.Add(textBlock);
             }
         }
@@ -218,10 +226,10 @@ namespace color_test
         private void ShowRectangle(int optionOffset, int colorOffset)
         {
             Rectangle optionRectangle = new Rectangle();
-            SolidColorBrush color_01 = new SolidColorBrush();
-            optionRectangle.Fill = color_01;
+            SolidColorBrush solidBrush = new SolidColorBrush();
+            optionRectangle.Fill = solidBrush;
             byte[] tmp = colordata.GetrgbMapValue(colorOffset);
-            color_01.Color = Color.FromArgb(255, tmp[0], tmp[1], tmp[2]);
+            solidBrush.Color = Color.FromArgb(255, tmp[0], tmp[1], tmp[2]);
             optionRectangle.Translation = vectordata.GetpositionVectorForRectangle(optionOffset);
             optionRectangle.Width = 150;
             optionRectangle.Height = 100;
@@ -356,7 +364,7 @@ namespace color_test
                     checkedButton.IsChecked = false;
                     InitializeColorNameOfQuiz(quizCounter);
                     UpdateAnswerStatus();
-                    ShowQuiz(quizCounter); // 1問目を出題
+                    ShowQuiz(); // 1問目を出題
                     break;
                 default:
                     break;
