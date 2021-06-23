@@ -36,7 +36,6 @@ namespace color_test
         private int correctCounter = 0;
         private int answerNum = 0;
         private TextBlock answerStatusBlock = new TextBlock();
-        private TextBlock answerColorNameBlock = new TextBlock();
         private int counterNotDeletedPerAnswer = 0;
         private RadioButton checkedButton;
 
@@ -207,15 +206,16 @@ namespace color_test
         /// <param name="answerNum">答えの番号</param>
         private void InitializeColorNameOfQuiz(int answerNum)
         {
+            TextBlock answerColorNameBlock = new TextBlock();
             answerColorNameBlock.Text = "(" + (answerNum + 1) + ")";
             string colorNameIncludesNewLine = colordata.GetnameMapValue(answerNum);
             answerColorNameBlock.Text += colorNameIncludesNewLine.Replace("\n", "");
-            answerColorNameBlock.FontSize = 27;
             answerColorNameBlock.Translation = vectordata.GetpositionVectorForAnswerColorName();
-            if(!layoutRoot.Children.Contains(answerColorNameBlock)){
+            // 初めに呼ばれたときだけ、RelativePanelに追加する
+            if (!layoutRoot.Children.Contains(answerColorNameBlock)) {
+                answerColorNameBlock.FontSize = 27;
                 layoutRoot.Children.Add(answerColorNameBlock);
             }
-            counterNotDeletedPerAnswer++;
         }
 
         /// <summary>
@@ -244,6 +244,7 @@ namespace color_test
         {
             bool isCorrect = CheckAnswer(answerNum);
             ShowisCorrected(isCorrect);
+            ShowPressEnterKey();
             PlaySE(isCorrect);
             UpdatecorrectCounter(isCorrect);
             UpdateAnswerStatus();
@@ -294,15 +295,39 @@ namespace color_test
         /// <param name="isCorrect">正解か不正解かを表すbool型</param>
         private void ShowisCorrected(bool isCorrect)
         {
+            TextBlock textBlock = new TextBlock();
+            textBlock.FontSize = 27;
+            textBlock.Translation = vectordata.GetpositionVectorForIsCorrected();
+            textBlock.Width = 120;
+            textBlock.TextAlignment = TextAlignment.Right;
             if (isCorrect)
             {
-                answerColorNameBlock.Text += "　正解！";
+                textBlock.Text = "正解！";
+                SolidColorBrush solidburush = new SolidColorBrush();
+                solidburush.Color = Colors.Red;
+                textBlock.Foreground = solidburush;
             }
             else
             {
-                answerColorNameBlock.Text += "　不正解！";
+                textBlock.Text = "不正解！";
+                SolidColorBrush solidburush = new SolidColorBrush();
+                solidburush.Color = Colors.Blue;
+                textBlock.Foreground = solidburush;
             }
-            answerColorNameBlock.Text += "(エンターキーで次の問題を表示)";
+            layoutRoot.Children.Add(textBlock);
+        }
+
+        /// <summary>
+        /// エンターキーを押すようメッセージを表示する
+        /// </summary>
+        private void ShowPressEnterKey()
+        {
+            TextBlock textBlock = new TextBlock();
+            textBlock.FontSize = 27;
+            Vector3 parentPosition = vectordata.GetpositionVectorForIsCorrected();
+            textBlock.Translation = parentPosition + new Vector3(120.0f, 0.0f, 0.0f);
+            textBlock.Text = "(エンターキーで次の問題を表示)";
+            layoutRoot.Children.Add(textBlock);
         }
 
         /// <summary>
