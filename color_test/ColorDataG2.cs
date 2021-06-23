@@ -56,13 +56,30 @@ namespace color_test
             nameMap.Add(26, "ジョンブリアン\n(あざやかな黄)");
             nameMap.Add(27, "刈安色(かりやすいろ)\n(うすい緑みの黄)");
             nameMap.Add(28, "エクルベージュ\n(うすい赤みの黄)");
+            /*  ここからが出題範囲3つめ  */
             nameMap.Add(29, "海松色(みるいろ)\n(暗い灰みの黄緑)");
             nameMap.Add(30, "シャルトルーズグリーン\n(明るい黄緑)");
             nameMap.Add(31, "鶸色(ひわいろ)\n(つよい黄緑)");
             nameMap.Add(32, "黄蘗色(きはだいろ)\n(あかるい黄緑)");
             nameMap.Add(33, "グラスグリーン\n(くすんだ黄緑)");
             nameMap.Add(34, "リーフグリーン\n(つよい黄緑)");
-            /*  ここからが出題範囲3つめ  */
+            /*  ここからが出題範囲4つめ  */
+            nameMap.Add(35, "緑青色(ろくしょういろ)\n(くすんだ緑)");
+            nameMap.Add(36, "常磐色(ときわいろ)\n(こい緑)");
+            nameMap.Add(37, "ボトルグリーン\n(ごく暗い緑)");
+            nameMap.Add(38, "マラカイトグリーン\n(こい緑)");
+            nameMap.Add(39, "アップルグリーン\n(やわらかい黄みの緑)");
+            nameMap.Add(40, "ミントグリーン\n(明るい緑)");
+            nameMap.Add(41, "鉄色(てついろ)\n(ごく暗い青緑)");
+            nameMap.Add(42, "ナイルブルー\n(くすんだ青緑)");
+            nameMap.Add(43, "ピーコックグリーン\n(青緑)");
+            /*  ここからが出題範囲5つめ  */
+            nameMap.Add(44, "納戸色(なんどいろ)\n(つよい緑みの青)");
+            nameMap.Add(45, "新橋色(しんばしいろ)\n(明るい緑みの青)");
+            nameMap.Add(46, "縹色(はなだいろ)\n(つよい青)");
+            nameMap.Add(47, "セルリアンブルー\n(あざやかな青)");
+            nameMap.Add(48, "甕覗(かめのぞき)\n(やわらかい緑みの青)");
+            nameMap.Add(49, "ミッドナイトブルー\n(ごく暗い紫みの青)");
         }
 
         /// <summary>
@@ -101,13 +118,30 @@ namespace color_test
             rgbMap.Add(26, new byte[] { 255, 220, 0 }); // ジョンブリアン
             rgbMap.Add(27, new byte[] { 245, 229, 107 }); // 刈安色
             rgbMap.Add(28, new byte[] { 246, 229, 204 }); // エクルベージュ
+            /*  ここからが出題範囲3つめ  */
             rgbMap.Add(29, new byte[] { 114, 109, 64 }); // 海松色
             rgbMap.Add(30, new byte[] { 217, 227, 103 }); // シャルトルーズグリーン
             rgbMap.Add(31, new byte[] { 215, 207, 58 }); // 鶸色
             rgbMap.Add(32, new byte[] { 254, 242, 99 }); // 黄蘗色
             rgbMap.Add(33, new byte[] { 123, 141, 66 }); // グラスグリーン
             rgbMap.Add(34, new byte[] { 159, 194, 77 }); // リーフグリーン
-            /*  ここからが出題範囲3つめ  */
+            /*  ここからが出題範囲4つめ  */
+            rgbMap.Add(35, new byte[] { 71, 136, 94 }); // 緑青色
+            rgbMap.Add(36, new byte[] { 0, 123, 67 }); // 常磐色
+            rgbMap.Add(37, new byte[] { 0, 77, 37 }); // ボトルグリーン
+            rgbMap.Add(38, new byte[] { 0, 152, 84 }); // マラカイトグリーン
+            rgbMap.Add(39, new byte[] { 167, 210, 141 }); // アップルグリーン
+            rgbMap.Add(40, new byte[] { 137, 201, 151 }); // ミントグリーン
+            rgbMap.Add(41, new byte[] { 0, 82, 67 }); // 鉄色
+            rgbMap.Add(42, new byte[] { 44, 180, 173 }); // ナイルブルー
+            rgbMap.Add(43, new byte[] { 0, 164, 151 }); // ピーコックグリーン
+            /*  ここからが出題範囲5つめ  */
+            rgbMap.Add(44, new byte[] { 0, 136, 153 }); // 納戸色
+            rgbMap.Add(45, new byte[] { 89, 185, 198 }); // 新橋色
+            rgbMap.Add(46, new byte[] { 39, 146, 195 }); // 縹色
+            rgbMap.Add(47, new byte[] { 0, 141, 183 }); // セルリアンブルー
+            rgbMap.Add(48, new byte[] { 162, 215, 221 }); // 甕覗
+            rgbMap.Add(49, new byte[] { 0, 30, 67 }); // ミッドナイトブルー
         }
 
         /// <summary>
@@ -117,14 +151,22 @@ namespace color_test
         /// <returns>出題範囲の始まり</returns>
         public int GetCurrentStartOfColors(int quizCounter)
         {
-            int startNum;
-            if(quizCounter <= 17)
+            int startNum = 0;
+            if(quizCounter <= 17) // 赤～赤黄は赤～赤黄から出題
             {
                 startNum = 0;
             }
-            else
+            else if(quizCounter <= 28) // 黄色は黄色から出題
             {
                 startNum = 18;
+            }
+            else if(quizCounter <= 34) // 黄緑は黄色～黄緑から出題
+            {
+                startNum = 18;
+            }
+            else if(quizCounter <= 43) // 緑～青緑は緑～青緑から出題
+            {
+                startNum = 35;
             }
             return startNum;
         }
@@ -136,13 +178,22 @@ namespace color_test
         /// <returns>出題範囲の終わり</returns>
         public int GetCurrentEndOfColors(int quizCounter)
         {
-            int endNum;
-            if(quizCounter <= 17)
+            int endNum = 0;
+            if(quizCounter <= 17) // 赤～赤黄は赤～赤黄から出題
             {
                 endNum = 17;
-            }else
+            }
+            else if (quizCounter <= 28) // 黄色は黄色から出題
+            {
+                endNum = 28;
+            }
+            else if(quizCounter <= 34) // 黄緑は黄色～黄緑から出題
             {
                 endNum = 34;
+            }
+            else if (quizCounter <= 43) // 緑～青緑は緑～青緑から出題
+            {
+                endNum = 43;
             }
             return endNum;
         }
