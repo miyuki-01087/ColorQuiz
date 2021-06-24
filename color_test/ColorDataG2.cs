@@ -80,6 +80,19 @@ namespace color_test
             nameMap.Add(47, "セルリアンブルー\n(あざやかな青)");
             nameMap.Add(48, "甕覗(かめのぞき)\n(やわらかい緑みの青)");
             nameMap.Add(49, "ミッドナイトブルー\n(ごく暗い紫みの青)");
+            nameMap.Add(50, "ウィスタリア\n(あざやかな青紫)");
+            nameMap.Add(51, "藤色(ふじいろ)\n(明るい青紫)");
+            /*  ここからが出題範囲6つめ  */
+            nameMap.Add(52, "江戸紫(えどむらさき)\n(こい青みの紫)");
+            nameMap.Add(53, "ライラック\n(やわらかい紫)");
+            nameMap.Add(54, "古代紫(こだいむらさき)\n(くすんだ紫)");
+            /*  ここからが出題範囲7つめ  */
+            nameMap.Add(55, "茶鼠(ちゃねずみ)\n(黄赤みの灰色)");
+            nameMap.Add(56, "利休鼠(りきゅうねずみ)\n(緑みの灰色)");
+            nameMap.Add(57, "銀鼠(ぎんねず)\n(明るい灰色)");
+            nameMap.Add(58, "煤竹色(すすたけいろ)\n(赤みを帯びた黄みの暗い灰色)");
+            nameMap.Add(59, "スレートグレイ\n(暗い灰色)");
+            nameMap.Add(60, "ランプブラック\n(黒)");
         }
 
         /// <summary>
@@ -142,6 +155,19 @@ namespace color_test
             rgbMap.Add(47, new byte[] { 0, 141, 183 }); // セルリアンブルー
             rgbMap.Add(48, new byte[] { 162, 215, 221 }); // 甕覗
             rgbMap.Add(49, new byte[] { 0, 30, 67 }); // ミッドナイトブルー
+            rgbMap.Add(50, new byte[] { 141, 147, 200 }); // ウィスタリア
+            rgbMap.Add(51, new byte[] { 187, 188, 222 }); // 藤色
+            /*  ここからが出題範囲6つめ  */
+            rgbMap.Add(52, new byte[] { 116, 83, 153 }); // 江戸紫
+            rgbMap.Add(53, new byte[] { 209, 186, 218 }); // ライラック
+            rgbMap.Add(54, new byte[] { 137, 91, 138 }); // 古代紫
+            /*  ここからが出題範囲7つめ  */
+            rgbMap.Add(55, new byte[] { 169, 158, 147 }); // 茶鼠
+            rgbMap.Add(56, new byte[] { 136, 142, 126 }); // 利休鼠
+            rgbMap.Add(57, new byte[] { 175, 175, 176 }); // 銀鼠
+            rgbMap.Add(58, new byte[] { 111, 81, 76 }); // 煤竹色
+            rgbMap.Add(59, new byte[] { 98, 96, 99 }); // スレートグレイ
+            rgbMap.Add(60, new byte[] { 36, 20, 14 }); // ランプブラック
         }
 
         /// <summary>
@@ -167,6 +193,14 @@ namespace color_test
             else if(quizCounter <= 43) // 緑～青緑は緑～青緑から出題
             {
                 startNum = 35;
+            }
+            else if (quizCounter <= 54) // 青/青紫/紫は青/青紫/紫から出題
+            {
+                startNum = 44;
+            }
+            else if(quizCounter <= 60)
+            {
+                startNum = 52;
             }
             return startNum;
         }
@@ -194,6 +228,14 @@ namespace color_test
             else if (quizCounter <= 43) // 緑～青緑は緑～青緑から出題
             {
                 endNum = 43;
+            }
+            else if (quizCounter <= 54) // 青/青紫/紫は青/青紫/紫から出題
+            {
+                endNum = 54;
+            }
+            else if (quizCounter <= 60) // 青/青紫/紫は青/青紫/紫から出題
+            {
+                endNum = 60;
             }
             return endNum;
         }
