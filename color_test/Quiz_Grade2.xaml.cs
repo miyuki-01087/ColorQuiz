@@ -29,8 +29,8 @@ namespace color_test
     public sealed partial class Quiz_Grade2 : Page
     {
         private const int NUM_OPTIONS = 8;
-        private ColorDataG2 colordata;
-        private VectorData vectordata;
+        private ColorDataG2 colorData;
+        private VectorData vectorData;
         private int[] optionsArray = new int[NUM_OPTIONS];
         private int quizCounter = 0;
         private int correctCounter = 0;
@@ -39,21 +39,20 @@ namespace color_test
         private int counterNotDeletedPerAnswer = 0;
         private RadioButton checkedButton;
 
-
         public Quiz_Grade2()
         {
             this.InitializeComponent();
             InitializeForQuiz();
             ShowQuiz(); // 1問目を出題
         }
-
+        
         /// <summary>
         /// 選択肢を初期化して、問題文と答えをする
         /// </summary>
         private void InitializeForQuiz()
         {
-            colordata = new ColorDataG2(NUM_OPTIONS);
-            vectordata = new VectorData(NUM_OPTIONS);
+            colorData = new ColorDataG2(NUM_OPTIONS);
+            vectorData = new VectorData(NUM_OPTIONS);
             InitializeQuizDescription();
             InitializeRadioButton();
             InitializeAnswerStatus();
@@ -99,10 +98,10 @@ namespace color_test
         private void InitializeAnswerStatus()
         {
             answerStatusBlock.Text += "回答状況：";
-            answerStatusBlock.Text += colordata.GetnameMapLength()+"問中 "+(quizCounter+1) + "問目";
+            answerStatusBlock.Text += colorData.GetnameMapLength()+"問中 "+(quizCounter+1) + "問目";
             answerStatusBlock.Text += "　"+correctCounter+"問正解";
             answerStatusBlock.FontSize = 25;
-            answerStatusBlock.Translation = vectordata.GetpositionVectorForAnswerStatus();
+            answerStatusBlock.Translation = vectorData.GetpositionVectorForAnswerStatus();
             layoutRoot.Children.Add(answerStatusBlock);
             counterNotDeletedPerAnswer++;
         }
@@ -127,8 +126,8 @@ namespace color_test
             do
             {
                 isDuplicated = false;
-                int startOfColors = colordata.GetCurrentStartOfColors(quizCounter);
-                int endOfColors = colordata.GetCurrentEndOfColors(quizCounter);
+                int startOfColors = colorData.GetCurrentStartOfColors(quizCounter);
+                int endOfColors = colorData.GetCurrentEndOfColors(quizCounter);
                 nextOption = rand.Next(startOfColors, endOfColors+1);
                 for (int i = 0; i < NUM_OPTIONS; i++)
                 {
@@ -150,8 +149,8 @@ namespace color_test
             {
                 int colorOffset = optionsArray[i];
                 TextBlock textBlock = new TextBlock();
-                textBlock.Text = colordata.GetnameMapValue(colorOffset);
-                Vector3 positionRectangle = vectordata.GetpositionVectorForRectangle(i);
+                textBlock.Text = colorData.GetnameMapValue(colorOffset);
+                Vector3 positionRectangle = vectorData.GetpositionVectorForRectangle(i);
                 textBlock.Translation = positionRectangle + new Vector3(-20.0f, 105.0f, 1.0f);
                 textBlock.Width = 190;
                 textBlock.TextAlignment = TextAlignment.Center;
@@ -175,7 +174,7 @@ namespace color_test
             for (int i=0; i<NUM_OPTIONS; i++)
             {
                 RadioButton button = new RadioButton();
-                Vector3 positionRectangle = vectordata.GetpositionVectorForRectangle(i);
+                Vector3 positionRectangle = vectorData.GetpositionVectorForRectangle(i);
                 button.Translation = positionRectangle + new Vector3(65.0f, -35.0f, 1.0f);
                 button.GroupName = "Options";
                 button.Content = (i+1);
@@ -195,7 +194,7 @@ namespace color_test
             TextBlock descriptionBlock = new TextBlock();
             descriptionBlock.Text = "以下の選択肢から、色名に合致するものを選択してください。";
             descriptionBlock.FontSize = 25;
-            descriptionBlock.Translation = vectordata.GetpositionVectorForDescription();
+            descriptionBlock.Translation = vectorData.GetpositionVectorForDescription();
             layoutRoot.Children.Add(descriptionBlock);
             counterNotDeletedPerAnswer++;
         }
@@ -208,12 +207,12 @@ namespace color_test
         {
             TextBlock answerColorNameBlock = new TextBlock();
             answerColorNameBlock.Text = "(" + (answerNum + 1) + ")";
-            string colorNameIncludesNewLine = colordata.GetnameMapValue(answerNum);
+            string colorNameIncludesNewLine = colorData.GetnameMapValue(answerNum);
             answerColorNameBlock.Text += colorNameIncludesNewLine.Replace("\n", "");
-            answerColorNameBlock.Translation = vectordata.GetpositionVectorForAnswerColorName();
+            answerColorNameBlock.Translation = vectorData.GetpositionVectorForAnswerColorName();
             // 初めに呼ばれたときだけ、RelativePanelに追加する
             if (!layoutRoot.Children.Contains(answerColorNameBlock)) {
-                answerColorNameBlock.FontSize = 27;
+                answerColorNameBlock.FontSize = 30;
                 layoutRoot.Children.Add(answerColorNameBlock);
             }
         }
@@ -228,9 +227,9 @@ namespace color_test
             Rectangle optionRectangle = new Rectangle();
             SolidColorBrush solidBrush = new SolidColorBrush();
             optionRectangle.Fill = solidBrush;
-            byte[] tmp = colordata.GetrgbMapValue(colorOffset);
+            byte[] tmp = colorData.GetrgbMapValue(colorOffset);
             solidBrush.Color = Color.FromArgb(255, tmp[0], tmp[1], tmp[2]);
-            optionRectangle.Translation = vectordata.GetpositionVectorForRectangle(optionOffset);
+            optionRectangle.Translation = vectorData.GetpositionVectorForRectangle(optionOffset);
             optionRectangle.Width = 150;
             optionRectangle.Height = 100;
             layoutRoot.Children.Add(optionRectangle);        
@@ -253,12 +252,30 @@ namespace color_test
         }
 
         /// <summary>
+        /// クイズを終了する
+        /// </summary>
+        private void TerminateQuiz()
+        {
+            SetScore();
+            Frame.Navigate(typeof(MainPage));
+        }
+
+        /// <summary>
+        /// ScoreDataクラスにスコアを保存する
+        /// </summary>
+        private void SetScore()
+        {
+            ScoreData scoreData = new ScoreData();
+            scoreData.SetScore(correctCounter);
+        }
+
+        /// <summary>
         /// 回答状況の説明文を更新する
         /// </summary>
         private void UpdateAnswerStatus()
         {
             answerStatusBlock.Text = "回答状況：";
-            answerStatusBlock.Text += colordata.GetnameMapLength() + "問中 " + (quizCounter + 1) + "問目";
+            answerStatusBlock.Text += colorData.GetnameMapLength() + "問中 " + (quizCounter + 1) + "問目";
             answerStatusBlock.Text += "　" + correctCounter + "問正解";
         }
 
@@ -297,7 +314,7 @@ namespace color_test
         {
             TextBlock textBlock = new TextBlock();
             textBlock.FontSize = 27;
-            textBlock.Translation = vectordata.GetpositionVectorForIsCorrected();
+            textBlock.Translation = vectorData.GetpositionVectorForIsCorrected();
             textBlock.Width = 120;
             textBlock.TextAlignment = TextAlignment.Right;
             if (isCorrect)
@@ -324,9 +341,16 @@ namespace color_test
         {
             TextBlock textBlock = new TextBlock();
             textBlock.FontSize = 27;
-            Vector3 parentPosition = vectordata.GetpositionVectorForIsCorrected();
+            Vector3 parentPosition = vectorData.GetpositionVectorForIsCorrected();
             textBlock.Translation = parentPosition + new Vector3(120.0f, 0.0f, 0.0f);
-            textBlock.Text = "(エンターキーで次の問題を表示)";
+            if(quizCounter < 60)
+            {
+                textBlock.Text = "(エンターキーで次の問題を表示)";
+            }
+            else
+            {
+                textBlock.Text = "(エンターキーでクイズを終了)";
+            }
             layoutRoot.Children.Add(textBlock);
         }
 
@@ -385,11 +409,19 @@ namespace color_test
             switch (e.Key)
             {
                 case VirtualKey.Enter:
-                    DeleteComponents();
-                    checkedButton.IsChecked = false;
-                    InitializeColorNameOfQuiz(quizCounter);
-                    UpdateAnswerStatus();
-                    ShowQuiz(); // 1問目を出題
+                    int numOfQuiz = colorData.GetnameMapLength();
+                    if (quizCounter == numOfQuiz) // 最終問題に答えてエンターした場合
+                    {
+                        TerminateQuiz();
+                    }
+                    else
+                    {
+                        DeleteComponents();
+                        checkedButton.IsChecked = false;
+                        InitializeColorNameOfQuiz(quizCounter);
+                        UpdateAnswerStatus();
+                        ShowQuiz(); // 1問目を出題
+                    }
                     break;
                 default:
                     break;

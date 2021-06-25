@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-06-23T01:00:20.833</Modified>
+      <Modified>2021-06-25T03:26:47.645</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\color_test.exe">
       <PackagePath>entrypoint\color_test.exe</PackagePath>
-      <Modified>2021-06-23T01:00:20.219</Modified>
+      <Modified>2021-06-25T03:26:46.871</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.12\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -98,15 +98,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2021-06-23T00:48:13.831</Modified>
+      <Modified>2021-06-25T02:59:07.180</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2021-06-23T00:48:13.831</Modified>
+      <Modified>2021-06-25T02:59:07.180</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\Quiz_Grade2.xbf">
       <PackagePath>Quiz_Grade2.xbf</PackagePath>
-      <Modified>2021-06-23T00:48:13.832</Modified>
+      <Modified>2021-06-25T02:59:07.181</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -114,11 +114,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2021-06-19T09:03:12.120</Modified>
+      <Modified>2021-06-25T02:59:09.722</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\Core\color_test.exe">
       <PackagePath>color_test.exe</PackagePath>
-      <Modified>2021-06-23T01:00:20.828</Modified>
+      <Modified>2021-06-25T03:26:47.639</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

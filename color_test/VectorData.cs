@@ -47,7 +47,7 @@ namespace color_test
         /// </summary>
         private void InitializeVectorForDescription()
         {
-            positionVectorForDescription = new Vector3(50.0f, 170.0f, 1.0f);
+            positionVectorForDescription = new Vector3(50.0f, 120.0f, 1.0f);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace color_test
         /// </summary>
         private void InitializeVectorForColorNameOfQuiz()
         {
-            positionVectorForAnswerColorName = new Vector3(50.0f, 250.0f, 1.0f);
+            positionVectorForAnswerColorName = new Vector3(50.0f, 200.0f, 1.0f);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace color_test
         /// </summary>
         private void InitializeVectorForIsCorrected()
         {
-            positionVectorForIsCorrected = new Vector3(500.0f, 250.0f, 1.0f);
+            positionVectorForIsCorrected = new Vector3(500.0f, 260.0f, 1.0f);
         }
 
         /// <summary>
