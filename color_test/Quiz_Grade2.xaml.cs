@@ -28,6 +28,9 @@ namespace color_test
     /// </summary>
     public sealed partial class Quiz_Grade2 : Page
     {
+        private const int formWidth = 1010;
+        private const int formHeight = 700;
+
         private const int NUM_OPTIONS = 8;
         private ColorDataG2 colorData;
         private VectorData vectorData;
@@ -43,6 +46,8 @@ namespace color_test
         {
             this.InitializeComponent();
             InitializeForQuiz();
+            CallShowTriangle();
+            ShowColorGenre();
             ShowQuiz(); // 1問目を出題
         }
         
@@ -236,6 +241,149 @@ namespace color_test
         }
 
         /// <summary>
+        /// 画面右上隅に三角形を描く
+        /// </summary>
+        /// <param name="isBack">後景の三角形であるか</param>
+        private void ShowTriangle(bool isBack)
+        {
+            var polygon = new Polygon();
+            int lengthOfTriangle;
+            if (isBack)
+            {
+                polygon.Fill = new SolidColorBrush(Colors.DarkSlateGray);
+                lengthOfTriangle = 170;
+            }
+            else
+            {
+                lengthOfTriangle = 150;
+                if (quizCounter < 10) // 赤系
+                {
+                    polygon.Fill = new SolidColorBrush(Colors.Crimson);
+                }
+                else if(quizCounter < 18) // 黄赤系
+                {
+                    polygon.Fill = new SolidColorBrush(Colors.DarkOrange);
+                }
+                else if (quizCounter < 29) // 黄系
+                {
+                    polygon.Fill = new SolidColorBrush(Colors.Gold);
+                }
+                else if (quizCounter < 35) // 黄緑系
+                {
+                    polygon.Fill = new SolidColorBrush(Colors.YellowGreen);
+                }
+                else if (quizCounter < 41) // 緑系
+                {
+                    polygon.Fill = new SolidColorBrush(Colors.Green);
+                }
+                else if (quizCounter < 47) // 青緑系
+                {
+                    polygon.Fill = new SolidColorBrush(Colors.DarkCyan);
+                }
+                else if (quizCounter < 50) // 青系
+                {
+                    polygon.Fill = new SolidColorBrush(Colors.DarkBlue);
+                }
+                else if (quizCounter < 56) // 青紫系
+                {
+                    polygon.Fill = new SolidColorBrush(Colors.MediumPurple);
+                }
+                else if (quizCounter < 58) // 紫系
+                {
+                    polygon.Fill = new SolidColorBrush(Colors.Purple);
+                }
+                else if (quizCounter < 61) // 無彩色
+                {
+                    polygon.Fill = new SolidColorBrush(Colors.Silver);
+                }
+
+            }
+            var points = new PointCollection();
+            points.Add(new Point(formWidth, 0));
+            points.Add(new Point(formWidth- lengthOfTriangle, 0));
+            points.Add(new Point(formWidth, lengthOfTriangle));
+
+            polygon.Points = points;
+            layoutRoot.Children.Add(polygon);
+        }
+
+        /// <summary>
+        /// ShowTriangleを2回呼んで、背景と前掲の三角形を描く
+        /// </summary>
+        private void CallShowTriangle()
+        {
+            ShowTriangle(true);
+            ShowTriangle(false);
+        }
+
+        /// <summary>
+        /// 右上隅に色のジャンルを表示する
+        /// </summary>
+        private void ShowColorGenre()
+        {
+            TextBlock textBlock = new TextBlock();
+            textBlock.Foreground = new SolidColorBrush(Colors.White);
+            textBlock.TextAlignment = TextAlignment.Center;
+            textBlock.FontSize = 50;
+            int offsetFromRight = 10 + (int)textBlock.FontSize;
+            int offsetFromTop = 8;
+
+            if (quizCounter < 10) // 赤系
+            {
+                textBlock.Text = "赤";
+            }
+            else if (quizCounter < 18) // 黄赤系
+            {
+                textBlock.Text = "黄赤";
+                textBlock.FontSize = 40;
+                offsetFromRight = 10 + (int)textBlock.FontSize*2;
+            }
+            else if (quizCounter < 29) // 黄系
+            {
+                textBlock.Text = "黄";
+            }
+            else if (quizCounter < 35) // 黄緑系
+            {
+                textBlock.Text = "黄緑";
+                textBlock.FontSize = 40;
+                offsetFromRight = 10 + (int)textBlock.FontSize * 2;
+            }
+            else if (quizCounter < 41) // 緑系
+            {
+                textBlock.Text = "緑";
+            }
+            else if (quizCounter < 47) // 青緑系
+            {
+                textBlock.Text = "青緑";
+                textBlock.FontSize = 40;
+                offsetFromRight = 10 + (int)textBlock.FontSize * 2;
+            }
+            else if (quizCounter < 50) // 青系
+            {
+                textBlock.Text = "青";
+            }
+            else if (quizCounter < 56) // 青紫系
+            {
+                textBlock.Text = "青紫";
+                textBlock.FontSize = 40;
+                offsetFromRight = 10 + (int)textBlock.FontSize * 2;
+            }
+            else if (quizCounter < 58) // 紫系
+            {
+                textBlock.Text = "紫";
+            }
+            else if (quizCounter < 61) // 無彩色
+            {
+                textBlock.Text = "無彩色";
+                textBlock.FontSize = 30;
+                offsetFromRight = 10 + (int)textBlock.FontSize * 3;
+            }
+            textBlock.Translation = new Vector3(formWidth - offsetFromRight, offsetFromTop, 5);
+            layoutRoot.Children.Add(textBlock);
+        }
+
+
+        /// <summary>
         /// クイズに答えた際の正誤判定および画面の初期化を行う
         /// </summary>
         /// <param name="answerNum">クイズの答えを示すint型</param>
@@ -417,10 +565,12 @@ namespace color_test
                     else
                     {
                         DeleteComponents();
+                        CallShowTriangle();
+                        ShowColorGenre();
                         checkedButton.IsChecked = false;
                         InitializeColorNameOfQuiz(quizCounter);
                         UpdateAnswerStatus();
-                        ShowQuiz(); // 1問目を出題
+                        ShowQuiz();
                     }
                     break;
                 default:

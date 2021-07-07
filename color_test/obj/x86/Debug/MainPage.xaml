@@ -8,8 +8,14 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <Button x:ConnectionId='2' x:Name="btn_G2" Content="二級の問題を始める" Margin="676,415,0,0" VerticalAlignment="Top"                     />
+    <Grid Width="1500" Height="1000" Margin="10,0,-10,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1070*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="411*"/>
+            <ColumnDefinition Width="18*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:ConnectionId='2' x:Name="btn_G2" Content="二級の問題を始める" Margin="676,415,0,0" VerticalAlignment="Top"                      Height="33" Width="135"/>
 
     </Grid>
 </Page>

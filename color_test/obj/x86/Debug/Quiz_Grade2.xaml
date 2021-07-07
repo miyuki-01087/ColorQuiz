@@ -9,7 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid x:ConnectionId='2'                       >
-        <RelativePanel x:ConnectionId='3' x:Name="layoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="487*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+        <RelativePanel x:ConnectionId='3' x:Name="layoutRoot" Width="1500" Height="1000" Grid.ColumnSpan="2">
         </RelativePanel>
     </Grid>
 </Page>
