@@ -32,14 +32,14 @@ namespace color_test
         private void InitializeVectorForRectangle(int NUM_OPTIONS)
         {
             positionVectorForRectangle = new Vector3[NUM_OPTIONS];
-            positionVectorForRectangle[0] = new Vector3(50.0f, 350.0f, 0.0f);
-            positionVectorForRectangle[1] = new Vector3(303.0f, 350.0f, 0.0f);
-            positionVectorForRectangle[2] = new Vector3(556.0f, 350.0f, 0.0f);
-            positionVectorForRectangle[3] = new Vector3(810.0f, 350.0f, 0.0f);
-            positionVectorForRectangle[4] = new Vector3(50.0f, 550.0f, 0.0f);
-            positionVectorForRectangle[5] = new Vector3(303.0f, 550.0f, 0.0f);
-            positionVectorForRectangle[6] = new Vector3(556.0f, 550.0f, 0.0f);
-            positionVectorForRectangle[7] = new Vector3(810.0f, 550.0f, 0.0f);
+            positionVectorForRectangle[0] = new Vector3(50.0f, 330.0f, 0.0f);
+            positionVectorForRectangle[1] = new Vector3(303.0f, 330.0f, 0.0f);
+            positionVectorForRectangle[2] = new Vector3(556.0f, 330.0f, 0.0f);
+            positionVectorForRectangle[3] = new Vector3(810.0f, 330.0f, 0.0f);
+            positionVectorForRectangle[4] = new Vector3(50.0f, 530.0f, 0.0f);
+            positionVectorForRectangle[5] = new Vector3(303.0f, 530.0f, 0.0f);
+            positionVectorForRectangle[6] = new Vector3(556.0f, 530.0f, 0.0f);
+            positionVectorForRectangle[7] = new Vector3(810.0f, 530.0f, 0.0f);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace color_test
         /// </summary>
         private void InitializeVectorForColorNameOfQuiz()
         {
-            positionVectorForAnswerColorName = new Vector3(50.0f, 200.0f, 1.0f);
+            positionVectorForAnswerColorName = new Vector3(50.0f, 180.0f, 1.0f);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace color_test
         /// </summary>
         private void InitializeVectorForIsCorrected()
         {
-            positionVectorForIsCorrected = new Vector3(500.0f, 260.0f, 1.0f);
+            positionVectorForIsCorrected = new Vector3(500.0f, 230.0f, 1.0f);
         }
 
         /// <summary>
