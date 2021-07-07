@@ -9,7 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid KeyDown="OnDownAnyKey">
-        <RelativePanel x:Name="layoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="487*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+        <RelativePanel x:Name="layoutRoot" Width="1500" Height="1000" Grid.ColumnSpan="2">
         </RelativePanel>
     </Grid>
 </Page>
