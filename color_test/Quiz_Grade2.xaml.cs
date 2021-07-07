@@ -59,6 +59,7 @@ namespace color_test
             colorData = new ColorDataG2(NUM_OPTIONS);
             vectorData = new VectorData(NUM_OPTIONS);
             InitializeQuizDescription();
+            InitializeUnderLines();
             InitializeRadioButton();
             InitializeAnswerStatus();
             InitializeColorNameOfQuiz(quizCounter);
@@ -223,6 +224,27 @@ namespace color_test
         }
 
         /// <summary>
+        /// 回答状況と問題文に下線を追加する
+        /// </summary>
+        private void InitializeUnderLines()
+        {
+            ShowGrayLines(vectorData.GetpositionVectorForAnswerStatus());
+            ShowGrayLines(vectorData.GetpositionVectorForDescription());
+        }
+
+        private void ShowGrayLines(Vector3 parentPosition)
+        {
+            Line line = new Line();
+            line.Stroke = new SolidColorBrush(Colors.DarkSlateGray);
+            line.StrokeThickness = 2;
+            line.Y1 = line.Y2 = parentPosition.Y + 40.0f;
+            line.X1 = parentPosition.X;
+            line.X2 = line.X1 + 800f;
+            layoutRoot.Children.Add(line);
+            counterNotDeletedPerAnswer++;
+        }
+
+        /// <summary>
         /// 長方形を表示する。長方形の色オフセットと位置オフセットを引数にとる。
         /// </summary>
         /// <param name="colorOffset">選択肢の番号</param>
@@ -381,7 +403,6 @@ namespace color_test
             textBlock.Translation = new Vector3(formWidth - offsetFromRight, offsetFromTop, 5);
             layoutRoot.Children.Add(textBlock);
         }
-
 
         /// <summary>
         /// クイズに答えた際の正誤判定および画面の初期化を行う
