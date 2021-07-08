@@ -32,9 +32,11 @@ namespace color_test
         private const int formHeight = 700;
 
         private const int NUM_OPTIONS = 8;
+        private bool isAnsweringNow = true;
         private ColorDataG2 colorData;
         private VectorData vectorData;
         private int[] optionsArray = new int[NUM_OPTIONS];
+        private RadioButton[] radioButtons = new RadioButton[NUM_OPTIONS];
         private int quizCounter = 0;
         private int correctCounter = 0;
         private int answerNum = 0;
@@ -112,6 +114,11 @@ namespace color_test
             counterNotDeletedPerAnswer++;
         }
 
+        /// <summary>
+        /// 選択肢の配列の中のランダムな位置に正解の番号を代入する
+        /// </summary>
+        /// <param name="quizCounter">正解の番号</param>
+        /// <returns>選択肢の配列内での正解の位置</returns>
         private int SetAnswerTooptionsArray(int quizCounter)
         {
             Random rand = new Random();
@@ -189,6 +196,7 @@ namespace color_test
                 button.Click += OnClickRadioButton;
                 layoutRoot.Children.Add(button);
                 counterNotDeletedPerAnswer++;
+                radioButtons[i] = button;
             }
         }
 
@@ -232,6 +240,10 @@ namespace color_test
             ShowGrayLines(vectorData.GetpositionVectorForDescription());
         }
 
+        /// <summary>
+        /// 与えられた位置ベクトルを基に、横幅800の線を引く
+        /// </summary>
+        /// <param name="parentPosition">下線を引きたい文章の位置ベクトル</param>
         private void ShowGrayLines(Vector3 parentPosition)
         {
             Line line = new Line();
@@ -542,10 +554,30 @@ namespace color_test
         /// <param name="e">イベントのデータ</param>
         private void OnClickRadioButton(object sender, RoutedEventArgs e)
         {
-            RadioButton radioButton = (RadioButton)sender;
-            checkedButton = radioButton;
-            int answerNum = (int)radioButton.Content - 1;
-            AnswerQuiz(answerNum);
+            if (isAnsweringNow)
+            {
+                isAnsweringNow = false;
+                RadioButton radioButton = (RadioButton)sender;
+                checkedButton = radioButton;
+                int answerNum = (int)radioButton.Content - 1;
+                AnswerQuiz(answerNum);
+            }
+            // 既にボタンにチェックがある場合は、最初に選択したラジオボタンにチェックを戻す
+            else
+            {
+                checkedButton.IsChecked = true;
+            }
+        }
+
+        /// <summary>
+        /// 選択肢のラジオボタンのチェックを外す
+        /// </summary>
+        private void UnCheckRadioButtons()
+        {
+            for(int i=0; i<NUM_OPTIONS; i++)
+            {
+                radioButtons[i].IsChecked = false;
+            }
         }
 
         /// <summary>
@@ -578,20 +610,24 @@ namespace color_test
             switch (e.Key)
             {
                 case VirtualKey.Enter:
-                    int numOfQuiz = colorData.GetnameMapLength();
-                    if (quizCounter == numOfQuiz) // 最終問題に答えてエンターした場合
+                    if (!isAnsweringNow) // ラジオボタンを選択したらエンターキーが反応する
                     {
-                        TerminateQuiz();
-                    }
-                    else
-                    {
-                        DeleteComponents();
-                        CallShowTriangle();
-                        ShowColorGenre();
-                        checkedButton.IsChecked = false;
-                        InitializeColorNameOfQuiz(quizCounter);
-                        UpdateAnswerStatus();
-                        ShowQuiz();
+                        int numOfQuiz = colorData.GetnameMapLength();
+                        if (quizCounter == numOfQuiz) // 最終問題に答えてエンターした場合
+                        {
+                            TerminateQuiz();
+                        }
+                        else
+                        {
+                            DeleteComponents();
+                            CallShowTriangle();
+                            ShowColorGenre();
+                            UnCheckRadioButtons();
+                            InitializeColorNameOfQuiz(quizCounter);
+                            UpdateAnswerStatus();
+                            ShowQuiz();
+                        }
+                        isAnsweringNow = true;
                     }
                     break;
                 default:
