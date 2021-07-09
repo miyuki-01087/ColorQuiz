@@ -32,5 +32,56 @@ namespace color_test
                 }
             }
         }
+
+        /// <summary>
+        /// スコアを格納した配列を取得する
+        /// </summary>
+        /// <returns>スコアを格納した配列。nullあり。</returns>
+        public string[] GetScore()
+        {
+            string[] scores = new string[LENGTH_OF_STORAGE];
+            for(int i=0; i<LENGTH_OF_STORAGE; i++)
+            {
+                if (container.Values[i.ToString()] != null)
+                {
+                    scores[i] = container.Values[i.ToString()].ToString();
+                }
+                else
+                {
+                    scores[i] = null;
+                }
+            }
+            return scores;
+        }
+
+        /// <summary>
+        /// スコアの長さの最大値を取得する
+        /// </summary>
+        /// <returns>スコアの長さの最大値</returns>
+        public int GetLengthOfStorage()
+        {
+            return LENGTH_OF_STORAGE;
+        }
+
+        /// <summary>
+        /// スコアの長さを取得する
+        /// </summary>
+        /// <returns>スコアの長さ</returns>
+        public int GetLengthOfScore()
+        {
+            int lengthOfScore = 0;
+            for (int i = 0; i < LENGTH_OF_STORAGE; i++)
+            {
+                if (container.Values[i.ToString()] != null)
+                {
+                    lengthOfScore++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return lengthOfScore;
+        }
     }
 }
