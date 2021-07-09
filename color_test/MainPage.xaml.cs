@@ -45,5 +45,10 @@ namespace color_test
         {
             Frame.Navigate(typeof(Quiz_Grade2));
         }
+
+        private void btn_Graph_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Graph));
+        }
     }
 }

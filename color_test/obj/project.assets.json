@@ -2,6 +2,29 @@
   "version": 3,
   "targets": {
     "UAP,Version=v10.0.17763": {
+      "LiveCharts/0.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        }
+      },
+      "LiveCharts.Uwp/0.8.0": {
+        "type": "package",
+        "dependencies": {
+          "LiveCharts": "0.8.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+          "Microsoft.Xaml.Behaviors.Uwp.Managed": "2.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        }
+      },
       "Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
         "type": "package",
         "dependencies": {
@@ -203,6 +226,17 @@
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
         }
       },
+      "Microsoft.Xaml.Behaviors.Uwp.Managed/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -309,6 +343,29 @@
       }
     },
     "UAP,Version=v10.0.17763/win10-arm": {
+      "LiveCharts/0.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        }
+      },
+      "LiveCharts.Uwp/0.8.0": {
+        "type": "package",
+        "dependencies": {
+          "LiveCharts": "0.8.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+          "Microsoft.Xaml.Behaviors.Uwp.Managed": "2.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        }
+      },
       "Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
         "type": "package",
         "dependencies": {
@@ -509,6 +566,17 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Uwp.Managed/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -795,6 +863,29 @@
       }
     },
     "UAP,Version=v10.0.17763/win10-arm-aot": {
+      "LiveCharts/0.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        }
+      },
+      "LiveCharts.Uwp/0.8.0": {
+        "type": "package",
+        "dependencies": {
+          "LiveCharts": "0.8.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+          "Microsoft.Xaml.Behaviors.Uwp.Managed": "2.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        }
+      },
       "Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
         "type": "package",
         "dependencies": {
@@ -995,6 +1086,17 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Uwp.Managed/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -1282,6 +1384,29 @@
       }
     },
     "UAP,Version=v10.0.17763/win10-arm64-aot": {
+      "LiveCharts/0.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        }
+      },
+      "LiveCharts.Uwp/0.8.0": {
+        "type": "package",
+        "dependencies": {
+          "LiveCharts": "0.8.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+          "Microsoft.Xaml.Behaviors.Uwp.Managed": "2.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        }
+      },
       "Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
         "type": "package",
         "dependencies": {
@@ -1482,6 +1607,17 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Uwp.Managed/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -1769,6 +1905,29 @@
       }
     },
     "UAP,Version=v10.0.17763/win10-x64": {
+      "LiveCharts/0.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        }
+      },
+      "LiveCharts.Uwp/0.8.0": {
+        "type": "package",
+        "dependencies": {
+          "LiveCharts": "0.8.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+          "Microsoft.Xaml.Behaviors.Uwp.Managed": "2.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        }
+      },
       "Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
         "type": "package",
         "dependencies": {
@@ -1969,6 +2128,17 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Uwp.Managed/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -2255,6 +2425,29 @@
       }
     },
     "UAP,Version=v10.0.17763/win10-x64-aot": {
+      "LiveCharts/0.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        }
+      },
+      "LiveCharts.Uwp/0.8.0": {
+        "type": "package",
+        "dependencies": {
+          "LiveCharts": "0.8.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+          "Microsoft.Xaml.Behaviors.Uwp.Managed": "2.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        }
+      },
       "Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
         "type": "package",
         "dependencies": {
@@ -2455,6 +2648,17 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Uwp.Managed/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -2742,6 +2946,29 @@
       }
     },
     "UAP,Version=v10.0.17763/win10-x86": {
+      "LiveCharts/0.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        }
+      },
+      "LiveCharts.Uwp/0.8.0": {
+        "type": "package",
+        "dependencies": {
+          "LiveCharts": "0.8.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+          "Microsoft.Xaml.Behaviors.Uwp.Managed": "2.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        }
+      },
       "Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
         "type": "package",
         "dependencies": {
@@ -2942,6 +3169,17 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Uwp.Managed/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -3228,6 +3466,29 @@
       }
     },
     "UAP,Version=v10.0.17763/win10-x86-aot": {
+      "LiveCharts/0.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll": {}
+        }
+      },
+      "LiveCharts.Uwp/0.8.0": {
+        "type": "package",
+        "dependencies": {
+          "LiveCharts": "0.8.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+          "Microsoft.Xaml.Behaviors.Uwp.Managed": "2.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/LiveCharts.Uwp.dll": {}
+        }
+      },
       "Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
         "type": "package",
         "dependencies": {
@@ -3428,6 +3689,17 @@
         "build": {
           "build/Microsoft.NETCore.UniversalWindowsPlatform.props": {},
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Uwp.Managed/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Microsoft.Xaml.Interactions.dll": {},
+          "lib/uap10.0/Microsoft.Xaml.Interactivity.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -3716,6 +3988,46 @@
     }
   },
   "libraries": {
+    "LiveCharts/0.8.0": {
+      "sha512": "Ak+ayWj4jtaiHcXuvOXP+ogjghd44XUr5VB4wzKqS6ACosgj27ymr8jmRXRPxXXaXzwesvdSNXslCWOLFurfuw==",
+      "type": "package",
+      "path": "livecharts/0.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/LiveCharts.XML",
+        "lib/net40/Livecharts.dll",
+        "lib/net40/Livecharts.pdb",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.XML",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/LiveCharts.pdb",
+        "livecharts.0.8.0.nupkg.sha512",
+        "livecharts.nuspec",
+        "readme.txt"
+      ]
+    },
+    "LiveCharts.Uwp/0.8.0": {
+      "sha512": "Jla7J35r8PE5ULjufwM5O5rFNseemAJAdT2plRlkht/U50pNzuux44zZ6iEgHlI8alccSaTkMd0NKmrksBcZpQ==",
+      "type": "package",
+      "path": "livecharts.uwp/0.8.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/uap10.0/LiveCharts.Uwp.XML",
+        "lib/uap10.0/LiveCharts.Uwp.dll",
+        "lib/uap10.0/LiveCharts.Uwp.pdb",
+        "lib/uap10.0/LiveCharts.Uwp.pri",
+        "lib/uap10.0/LiveCharts.Uwp/DefaultGeoMapTooltip.xaml",
+        "lib/uap10.0/LiveCharts.Uwp/DefaultLegend.xaml",
+        "lib/uap10.0/LiveCharts.Uwp/DefaultTooltip.xaml",
+        "lib/uap10.0/LiveCharts.Uwp/HeatColorRange.xaml",
+        "lib/uap10.0/LiveCharts.Uwp/LiveCharts.Uwp.xr.xml",
+        "livecharts.uwp.0.8.0.nupkg.sha512",
+        "livecharts.uwp.nuspec",
+        "tools/install.ps1"
+      ]
+    },
     "Microsoft.Net.Native.Compiler/2.2.10-rel-29722-00": {
       "sha512": "RvrUhS53oMQfDRhz8CnV+d2RXnvyc7mqBJtcXpWhIHI36jEZwepOke4wLfbOQQzpyVauFWGu+jkQSzYNxpHJQA==",
       "type": "package",
@@ -4095,6 +4407,25 @@
         "ref/uap10.0.15138/mscorlib.dll",
         "ref/uap10.0.15138/netstandard.dll",
         "runtime.json"
+      ]
+    },
+    "Microsoft.Xaml.Behaviors.Uwp.Managed/2.0.0": {
+      "sha512": "FHAMa5uwPgkMfy9u3g5sH8o3C8zZOQoLfKUznn95ejNhmNBz3Yj7Diy9pKWabYgkSiyjKzc+E5T4ZsZkwVAJkQ==",
+      "type": "package",
+      "path": "microsoft.xaml.behaviors.uwp.managed/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/uap10.0/Design/Microsoft.Xaml.Interactions.Design.dll",
+        "lib/uap10.0/Design/Microsoft.Xaml.Interactivity.Design.dll",
+        "lib/uap10.0/Microsoft.Xaml.Interactions.dll",
+        "lib/uap10.0/Microsoft.Xaml.Interactions.pri",
+        "lib/uap10.0/Microsoft.Xaml.Interactions.xml",
+        "lib/uap10.0/Microsoft.Xaml.Interactivity.dll",
+        "lib/uap10.0/Microsoft.Xaml.Interactivity.pri",
+        "lib/uap10.0/Microsoft.Xaml.Interactivity.xml",
+        "microsoft.xaml.behaviors.uwp.managed.2.0.0.nupkg.sha512",
+        "microsoft.xaml.behaviors.uwp.managed.nuspec"
       ]
     },
     "NETStandard.Library/2.0.3": {
@@ -8154,6 +8485,7 @@
   },
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.17763": [
+      "LiveCharts.Uwp >= 0.8.0",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.2.12"
     ]
   },
@@ -8200,6 +8532,10 @@
     "frameworks": {
       "uap10.0.17763": {
         "dependencies": {
+          "LiveCharts.Uwp": {
+            "target": "Package",
+            "version": "[0.8.0, )"
+          },
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",
             "version": "[6.2.12, )"

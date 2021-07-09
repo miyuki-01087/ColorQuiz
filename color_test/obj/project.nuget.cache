@@ -1,13 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "yJyV3CkQiwKso3GA2q1otqP+Bur2WwRPyf4sIze+lE9XT+SJXjjUT0+V5xD4v43hys4BzzA9hZ5Oi9M+krnW4w==",
+  "dgSpecHash": "dplIA1A9n0ULTkgksM+Ad6bPAXl817Qo/vaiHC1TAGuVJd/cSt3NAUVmJ6Kn98L7J7+VetPy9zLctztVNG2Q4w==",
   "success": true,
   "projectFilePath": "C:\\Users\\miyuki\\source\\repos\\color_test\\color_test\\color_test.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\miyuki\\.nuget\\packages\\livecharts\\0.8.0\\livecharts.0.8.0.nupkg.sha512",
+    "C:\\Users\\miyuki\\.nuget\\packages\\livecharts.uwp\\0.8.0\\livecharts.uwp.0.8.0.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.net.native.compiler\\2.2.10-rel-29722-00\\microsoft.net.native.compiler.2.2.10-rel-29722-00.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.net.uwpcoreruntimesdk\\2.2.12\\microsoft.net.uwpcoreruntimesdk.2.2.12.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.netcore.platforms\\2.1.0\\microsoft.netcore.platforms.2.1.0.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.netcore.universalwindowsplatform\\6.2.12\\microsoft.netcore.universalwindowsplatform.6.2.12.nupkg.sha512",
+    "C:\\Users\\miyuki\\.nuget\\packages\\microsoft.xaml.behaviors.uwp.managed\\2.0.0\\microsoft.xaml.behaviors.uwp.managed.2.0.0.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\runtime.win10-arm-aot.microsoft.netcore.universalwindowsplatform\\6.2.12\\runtime.win10-arm-aot.microsoft.netcore.universalwindowsplatform.6.2.12.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\runtime.win10-arm.microsoft.net.native.compiler\\2.2.10-rel-29722-00\\runtime.win10-arm.microsoft.net.native.compiler.2.2.10-rel-29722-00.nupkg.sha512",
