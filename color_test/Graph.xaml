@@ -25,7 +25,7 @@
 
         <!--LiveChartを配置-->
         <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <lvc:CartesianChart x:Name="LC_Graph" Series="{x:Bind Path=Sc}" />
+            <lvc:CartesianChart x:Name="LC_Graph" Series="{x:Bind Path=seriesCollection}" />
         </Grid>
     </Grid>
 </Page>
