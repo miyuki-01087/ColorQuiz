@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using LiveCharts;
 using LiveCharts.Uwp;
+using Windows.UI;
 
 // 空白ページの項目テンプレートについては、https://go.microsoft.com/fwlink/?LinkId=234238 を参照してください
 
@@ -26,7 +27,7 @@ namespace color_test
     {
         private double[] xData = null;
         private long[] yData = null;
-        public SeriesCollection Sc { get; set; } = new SeriesCollection();
+        public SeriesCollection seriesCollection { get; set; } = new SeriesCollection();
 
         public Graph()
         {
@@ -63,51 +64,40 @@ namespace color_test
             }
         }
 
+        /// <summary>
+        /// グラフを描く
+        /// </summary>
         private void DrawGraph()
         {
-            Sc.Clear();
-            Sc.Add(
-                new LineSeries                     //折れ線グラフ
+            seriesCollection.Clear();
+            seriesCollection.Add(
+                new LineSeries // 折れ線グラフ
                 {
                     //凡例名
                     Title = "折れ線",
                     //系列値
                     Values = new ChartValues<long>(),
                     //線の色（省略：自動で配色されます）
-                    Stroke = new Windows.UI.Xaml.Media.SolidColorBrush(Windows.UI.Colors.Red),
+                    Stroke = new Windows.UI.Xaml.Media.SolidColorBrush(Colors.DarkSlateBlue),
                     //直線のスムージング（0：なし、省略：あり）
-                    //LineSmoothness = 0,
-
+                    LineSmoothness = 0,
                 });
-
-
-            /////////////////////////////////////
-            //ステップ２:LiveChartの設定
-            /////////////////////////////////////
-            //凡例の表示位置
-            LC_Graph.LegendLocation = LegendLocation.Right;
 
             //軸の設定
             LC_Graph.AxisX.Clear();     //デフォルトで設定されている軸をクリア
-            LC_Graph.AxisX.Add(new Axis { Title = "横軸", FontSize = 20 });
+            LC_Graph.AxisX.Add(new Axis { Title = "受験回数", FontSize = 20 });
             LC_Graph.AxisY.Clear();
-            LC_Graph.AxisY.Add(new Axis { Title = "縦軸", FontSize = 20, MinValue = 0 });
-
-
-            /////////////////////////////////////
-            //ステップ３:値をランダムに追加
-            /////////////////////////////////////
+            LC_Graph.AxisY.Add(new Axis { Title = "正解数", FontSize = 20, MinValue = 0 });
 
             //各系列に、それぞれ値を代入
-            for (int iSeries = 0; iSeries < Sc.Count; iSeries++)
+            for (int i = 0; i < seriesCollection.Count; i++)
             {
-                Sc[iSeries].Values.Clear();
+                seriesCollection[i].Values.Clear();
 
-                //20点だけ追加
-                for (int points = 0; points < 5; ++points)
+                for (int points = 0; points < yData.Length; points++)
                 {
                     //乱数で数値を代入
-                    Sc[iSeries].Values.Add(yData[points]);
+                    seriesCollection[i].Values.Add(yData[points]);
                 }
             }
         }
