@@ -10,20 +10,15 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <!--ページを2分割にする-->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" >
-            <Grid Background="DarkSlateGray">
-                <!--見出しを配置-->
-                <TextBlock Text="　グラフ" Foreground="White"/>
-            </Grid>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Right">
+            <Button x:ConnectionId='3' x:Name="btn_ReturnToMain" Content="戻る"                                ></Button>
         </StackPanel>
 
-        <!--LiveChartを配置-->
         <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <lvc:CartesianChart x:ConnectionId='2' x:Name="LC_Graph"                                         />
         </Grid>

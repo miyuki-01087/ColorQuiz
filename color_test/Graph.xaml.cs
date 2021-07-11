@@ -21,7 +21,7 @@ using Windows.UI;
 namespace color_test
 {
     /// <summary>
-    /// それ自体で使用できる空白ページまたはフレーム内に移動できる空白ページ。
+    /// 成績をグラフで見せるページ
     /// </summary>
     public sealed partial class Graph : Page
     {
@@ -71,10 +71,10 @@ namespace color_test
         {
             seriesCollection.Clear();
             seriesCollection.Add(
-                new LineSeries // 折れ線グラフ
+                new LineSeries
                 {
                     //凡例名
-                    Title = "折れ線",
+                    Title = "直近20回までの正解数",
                     //系列値
                     Values = new ChartValues<long>(),
                     //線の色（省略：自動で配色されます）
@@ -83,23 +83,28 @@ namespace color_test
                     LineSmoothness = 0,
                 });
 
+            LC_Graph.LegendLocation = LegendLocation.Top;
+
             //軸の設定
             LC_Graph.AxisX.Clear();     //デフォルトで設定されている軸をクリア
-            LC_Graph.AxisX.Add(new Axis { Title = "受験回数", FontSize = 20 });
+            LC_Graph.AxisX.Add(new Axis { Title = "受験回数", FontSize = 20 , MaxValue = 20});
             LC_Graph.AxisY.Clear();
-            LC_Graph.AxisY.Add(new Axis { Title = "正解数", FontSize = 20, MinValue = 0 });
+            LC_Graph.AxisY.Add(new Axis { Title = "正解数", FontSize = 20, MinValue = 0, MaxValue = 61});
 
-            //各系列に、それぞれ値を代入
             for (int i = 0; i < seriesCollection.Count; i++)
             {
                 seriesCollection[i].Values.Clear();
 
                 for (int points = 0; points < yData.Length; points++)
                 {
-                    //乱数で数値を代入
                     seriesCollection[i].Values.Add(yData[points]);
                 }
             }
+        }
+
+        private void btn_ReturnToMain_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
         }
     }
 }
