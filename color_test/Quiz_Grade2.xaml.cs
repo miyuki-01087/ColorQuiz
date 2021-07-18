@@ -19,7 +19,6 @@ using System.Windows;
 using Windows.System;
 using Windows.Media.Core;
 
-// 空白ページの項目テンプレートについては、https://go.microsoft.com/fwlink/?LinkId=234238 を参照してください
 
 namespace color_test
 {

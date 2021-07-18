@@ -15,8 +15,6 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.ViewManagement;
 
 
-// 空白ページの項目テンプレートについては、https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x411 を参照してください
-
 namespace color_test
 {
     /// <summary>
@@ -49,6 +47,12 @@ namespace color_test
         private void btn_Graph_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Graph));
+        }
+
+        private void btn_DeleteScore_Clicl(object sender, RoutedEventArgs e)
+        {
+            ScoreData scoreData = new ScoreData();
+            scoreData.DeleteScores();
         }
     }
 }
