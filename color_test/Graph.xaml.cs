@@ -16,7 +16,6 @@ using LiveCharts;
 using LiveCharts.Uwp;
 using Windows.UI;
 
-// 空白ページの項目テンプレートについては、https://go.microsoft.com/fwlink/?LinkId=234238 を参照してください
 
 namespace color_test
 {
@@ -44,13 +43,12 @@ namespace color_test
         {
             ScoreData scoreData = new ScoreData();
             string[] scores = scoreData.GetScore();
-            int maxLengthOfScore = scoreData.GetLengthOfStorage();
 
             int lengthOfScore = scoreData.GetLengthOfScore();
             xData = new double[lengthOfScore];
             yData = new long[lengthOfScore];
 
-            for (int i=0; i<maxLengthOfScore; i++)
+            for (int i=0; i< lengthOfScore; i++)
             {
                 if(scores[i] != null)
                 {
@@ -86,12 +84,14 @@ namespace color_test
             LC_Graph.LegendLocation = LegendLocation.Top;
 
             //軸の設定
-            LC_Graph.AxisX.Clear();     //デフォルトで設定されている軸をクリア
-            LC_Graph.AxisX.Add(new Axis { Title = "受験回数", FontSize = 20 , MaxValue = 20});
+            ScoreData scoreData = new ScoreData();
+            int maxLengthOfScore = scoreData.GetLengthOfStorage();
+            LC_Graph.AxisX.Clear();
             LC_Graph.AxisY.Clear();
+            LC_Graph.AxisX.Add(new Axis { Title = "受験回数", FontSize = 20 , MaxValue = maxLengthOfScore });
             LC_Graph.AxisY.Add(new Axis { Title = "正解数", FontSize = 20, MinValue = 0, MaxValue = 61});
 
-            for (int i = 0; i < seriesCollection.Count; i++)
+            for (int i = 0; i < seriesCollection.Count; i++) 
             {
                 seriesCollection[i].Values.Clear();
 

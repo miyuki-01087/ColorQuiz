@@ -9,12 +9,36 @@ namespace color_test
 {
     class ScoreData
     {
+        ApplicationDataContainer localSettings;
         ApplicationDataContainer container;
         private const int LENGTH_OF_STORAGE = 20;
 
         public ScoreData()
         {
-            container = ApplicationData.Current.LocalSettings;
+            localSettings = ApplicationData.Current.LocalSettings;
+            bool hasContainer = CheckContainerExsists();
+            if (!hasContainer)
+            {
+                CreateContainer();
+            }
+        }
+
+        /// <summary>
+        /// コンテナを作成する
+        /// </summary>
+        private void CreateContainer()
+        {
+            container = localSettings.CreateContainer("scoreContainer", ApplicationDataCreateDisposition.Always);
+        }
+
+        /// <summary>
+        /// スコアを格納するコンテナが存在するかチェックする
+        /// </summary>
+        /// <returns>コンテナが存在するか</returns>
+        private bool CheckContainerExsists()
+        {
+            bool hasContainer = localSettings.Containers.ContainsKey("scoreContainer");
+            return hasContainer;
         }
 
         /// <summary>
@@ -23,11 +47,17 @@ namespace color_test
         /// <param name="score">点数</param>
         public void SetScore(int score)
         {
-            for(int i=0; i<LENGTH_OF_STORAGE; i++)
+            bool hasContainer = CheckContainerExsists();
+            if (!hasContainer)
             {
-                if(container.Values[i.ToString()] == null)
+                CreateContainer();
+            }
+
+            for (int i=0; i<LENGTH_OF_STORAGE; i++)
+            {
+                if(localSettings.Containers["scoreContainer"].Values[i.ToString()] == null)
                 {
-                    container.Values[i.ToString()] = score;
+                    localSettings.Containers["scoreContainer"].Values[i.ToString()] = score;
                     break;
                 }
             }
@@ -40,15 +70,27 @@ namespace color_test
         public string[] GetScore()
         {
             string[] scores = new string[LENGTH_OF_STORAGE];
-            for(int i=0; i<LENGTH_OF_STORAGE; i++)
+            bool hasContainer = CheckContainerExsists();
+            if (!hasContainer)
             {
-                if (container.Values[i.ToString()] != null)
+                CreateContainer();
+                for(int i=0; i<LENGTH_OF_STORAGE; i++)
                 {
-                    scores[i] = container.Values[i.ToString()].ToString();
+                    scores[i] = 0.ToString();
                 }
-                else
+            }
+            else
+            {
+                for (int i = 0; i < LENGTH_OF_STORAGE; i++)
                 {
-                    scores[i] = null;
+                    if (localSettings.Containers["scoreContainer"].Values[i.ToString()] != null)
+                    {
+                        scores[i] = localSettings.Containers["scoreContainer"].Values[i.ToString()].ToString();
+                    }
+                    else
+                    {
+                        scores[i] = null;
+                    }
                 }
             }
             return scores;
@@ -70,18 +112,38 @@ namespace color_test
         public int GetLengthOfScore()
         {
             int lengthOfScore = 0;
-            for (int i = 0; i < LENGTH_OF_STORAGE; i++)
+            bool hasContainer = CheckContainerExsists();
+            if (!hasContainer)
             {
-                if (container.Values[i.ToString()] != null)
-                {
-                    lengthOfScore++;
-                }
-                else
-                {
-                    break;
-                }
+                return 0;
             }
-            return lengthOfScore;
+            else
+            {
+                for (int i = 0; i < LENGTH_OF_STORAGE; i++)
+                {
+                    if (localSettings.Containers["scoreContainer"].Values[i.ToString()] != null)
+                    {
+                        lengthOfScore++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                return lengthOfScore;
+            }
+        }
+
+        /// <summary>
+        /// スコアを全て削除する
+        /// </summary>
+        public void DeleteScores()
+        {
+            bool hasContainer = CheckContainerExsists();
+            if (hasContainer)
+            {
+                localSettings.DeleteContainer("scoreContainer");
+            }
         }
     }
 }
