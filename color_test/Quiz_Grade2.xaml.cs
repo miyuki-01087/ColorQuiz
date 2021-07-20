@@ -629,6 +629,46 @@ namespace color_test
                         isAnsweringNow = true;
                     }
                     break;
+                case VirtualKey.Number1:
+                case VirtualKey.NumberPad1:
+                    radioButtons[0].IsChecked = true;
+                    OnClickRadioButton(radioButtons[0], new RoutedEventArgs());
+                    break;
+                case VirtualKey.Number2:
+                case VirtualKey.NumberPad2:
+                    radioButtons[1].IsChecked = true;
+                    OnClickRadioButton(radioButtons[1], new RoutedEventArgs());
+                    break;
+                case VirtualKey.Number3:
+                case VirtualKey.NumberPad3:
+                    radioButtons[2].IsChecked = true;
+                    OnClickRadioButton(radioButtons[2], new RoutedEventArgs());
+                    break;
+                case VirtualKey.Number4:
+                case VirtualKey.NumberPad4:
+                    radioButtons[3].IsChecked = true;
+                    OnClickRadioButton(radioButtons[3], new RoutedEventArgs());
+                    break;
+                case VirtualKey.Number5:
+                case VirtualKey.NumberPad5:
+                    radioButtons[4].IsChecked = true;
+                    OnClickRadioButton(radioButtons[4], new RoutedEventArgs());
+                    break;
+                case VirtualKey.Number6:
+                case VirtualKey.NumberPad6:
+                    radioButtons[5].IsChecked = true;
+                    OnClickRadioButton(radioButtons[5], new RoutedEventArgs());
+                    break;
+                case VirtualKey.Number7:
+                case VirtualKey.NumberPad7:
+                    radioButtons[6].IsChecked = true;
+                    OnClickRadioButton(radioButtons[6], new RoutedEventArgs());
+                    break;
+                case VirtualKey.Number8:
+                case VirtualKey.NumberPad8:
+                    radioButtons[7].IsChecked = true;
+                    OnClickRadioButton(radioButtons[7], new RoutedEventArgs());
+                    break;
                 default:
                     break;
             }
