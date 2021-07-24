@@ -6,19 +6,46 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    MinHeight="700" MinWidth="1070"
+    >
 
-    <Grid Width="1500" Height="1000" Margin="10,0,-10,0">
+    <Grid x:ConnectionId='2' x:Name="gridLayout" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1070*"/>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="411*"/>
-            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="0.01*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.01*"/>
         </Grid.ColumnDefinitions>
-        <Button x:ConnectionId='2' x:Name="btn_G2" Content="二級の問題を始める" Margin="676,415,0,0" VerticalAlignment="Top"                     />
-        <Button x:ConnectionId='3' x:Name="btn_Graph" Content="成績" Margin="364,345,0,0" VerticalAlignment="Top"                        />
-        <Button x:ConnectionId='4' x:Name="btn_DeleteScore" Content="スコアを削除する" Margin="436,121,0,0"                              />
 
+
+        <Border Translation="0,0,0" Margin="0,0,0,0" Grid.RowSpan="3" Grid.ColumnSpan="3" Grid.Column="0">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,0.8" StartPoint="0.5,0.1" >
+                    <GradientStop Color="Yellow" Offset="0"/>
+                    <GradientStop Color="Gold" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <Viewbox  Width="800" Height="300" Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="1" Grid.RowSpan="3" Stretch="Uniform" Margin="-50,-500,0,0">
+            <TextBlock  Grid.Row="1" Grid.Column="1" Text="色彩検定2級色名問題集" FontSize="60" FontFamily="Meiryo" TextWrapping="Wrap"/>
+        </Viewbox>
+        <Viewbox  Width="300" Height="300" Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="1" Grid.RowSpan="3" Stretch="Uniform" Margin="-700,100,0,0">
+            <Button x:ConnectionId='5' x:Name="btn_G2" Grid.Row="1" Width="300" Height="300" CornerRadius="150" Background="PapayaWhip" Grid.Column="1" Grid.ColumnSpan="3"
+                Content="問題を始める" FontSize="40"                      Grid.RowSpan="3"/>
+        </Viewbox>
+        <Viewbox  Width="300" Height="300" Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="1" Grid.RowSpan="3" Stretch="Uniform" Margin="-50,100,0,0">
+            <Button x:ConnectionId='4' x:Name="btn_Graph"  Width="279" Height="288" CornerRadius="150" Background="PapayaWhip" Grid.Column="1" Grid.ColumnSpan="3"
+                Content="スコア確認" FontSize="40"                         Grid.RowSpan="3"/>
+        </Viewbox>
+        <Viewbox  Width="300" Height="300" Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="1" Grid.RowSpan="3" Stretch="Uniform" Margin="600,100,0,0">
+            <Button x:ConnectionId='3' x:Name="btn_DeleteScore" Grid.Row="1" Width="300" Height="300" CornerRadius="150" Background="PapayaWhip" Grid.Column="1" Grid.ColumnSpan="3"
+                Content="スコア削除" FontSize="40"                               Grid.RowSpan="3"/>
+        </Viewbox>
     </Grid>
 </Page>
 
