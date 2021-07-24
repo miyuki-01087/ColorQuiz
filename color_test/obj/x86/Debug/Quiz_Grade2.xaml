@@ -9,12 +9,20 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid x:ConnectionId='2'                       >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="487*"/>
-            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <RelativePanel x:ConnectionId='3' x:Name="layoutRoot" Width="1500" Height="1000" Grid.ColumnSpan="2">
-        </RelativePanel>
+        <Viewbox Grid.ColumnSpan="1" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Margin="0,-540,0,0" Stretch="Uniform">
+            <RelativePanel x:ConnectionId='3' x:Name="layoutRoot">
+            </RelativePanel>
+        </Viewbox>
     </Grid>
 </Page>
 

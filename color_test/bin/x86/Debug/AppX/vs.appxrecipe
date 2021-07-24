@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-07-20T04:55:28.370</Modified>
+      <Modified>2021-07-24T09:35:33.889</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\color_test.exe">
       <PackagePath>entrypoint\color_test.exe</PackagePath>
-      <Modified>2021-07-20T04:55:27.476</Modified>
+      <Modified>2021-07-24T09:35:32.457</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\.nuget\packages\livecharts\0.8.0\lib\portable-net40+sl5+win8+wp8+wpa81\LiveCharts.dll">
       <PackagePath>LiveCharts.dll</PackagePath>
@@ -114,23 +114,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\color_test.xr.xml">
       <PackagePath>color_test.xr.xml</PackagePath>
-      <Modified>2021-07-18T03:52:34.969</Modified>
+      <Modified>2021-07-24T09:20:40.199</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2021-07-20T04:50:42.388</Modified>
+      <Modified>2021-07-24T09:35:02.791</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\Graph.xbf">
       <PackagePath>Graph.xbf</PackagePath>
-      <Modified>2021-07-20T04:50:42.388</Modified>
+      <Modified>2021-07-24T09:35:02.792</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2021-07-20T04:50:42.388</Modified>
+      <Modified>2021-07-24T09:35:32.230</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\Quiz_Grade2.xbf">
       <PackagePath>Quiz_Grade2.xbf</PackagePath>
-      <Modified>2021-07-20T04:50:42.388</Modified>
+      <Modified>2021-07-24T09:35:02.792</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -142,7 +142,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\Core\color_test.exe">
       <PackagePath>color_test.exe</PackagePath>
-      <Modified>2021-07-20T04:55:28.366</Modified>
+      <Modified>2021-07-24T09:35:33.884</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

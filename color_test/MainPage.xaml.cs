@@ -5,14 +5,18 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Shapes;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Composition;
 using Windows.UI.ViewManagement;
+using System.Numerics;
 
 
 namespace color_test
@@ -28,6 +32,8 @@ namespace color_test
         {
             this.InitializeComponent();
             SetFormSize();
+            DrawBackGround();
+            
         }
 
         /// <summary>
@@ -37,6 +43,30 @@ namespace color_test
         {
             ApplicationView.PreferredLaunchViewSize = new Size(formWidth, formHeight);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+        }
+
+        private void DrawBackGround()
+        {
+            DrawGradientRectangle();
+        }
+
+        private void DrawGradientRectangle()
+        {
+            LinearGradientBrush gradientBrush = new LinearGradientBrush();
+            Border border = new Border();
+
+            GradientStop gradientStopTop = new GradientStop();
+            gradientStopTop.Color = Colors.Red;
+            gradientStopTop.Offset = 0.0;
+            gradientBrush.GradientStops.Add(gradientStopTop);
+
+            GradientStop gradientStopBottom = new GradientStop();
+            gradientStopBottom.Color = Colors.Yellow;
+            gradientStopBottom.Offset = 1.0;
+            gradientBrush.GradientStops.Add(gradientStopBottom);
+
+            border.Background = gradientBrush;
+
         }
 
         private void btn_G2_Click(object sender, RoutedEventArgs e)
@@ -49,7 +79,7 @@ namespace color_test
             Frame.Navigate(typeof(Graph));
         }
 
-        private void btn_DeleteScore_Clicl(object sender, RoutedEventArgs e)
+        private void btn_DeleteScore_Click(object sender, RoutedEventArgs e)
         {
             ScoreData scoreData = new ScoreData();
             scoreData.DeleteScores();
