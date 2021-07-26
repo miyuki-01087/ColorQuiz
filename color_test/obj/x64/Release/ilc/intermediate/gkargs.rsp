@@ -1,0 +1,11 @@
+﻿"C:\Users\miyuki\source\repos\color_test\color_test\obj\x64\Release\ilc\in\color_test.exe"
+"C:\Users\miyuki\source\repos\color_test\color_test\obj\x64\Release\ilc\in\LiveCharts.dll"
+"C:\Users\miyuki\source\repos\color_test\color_test\obj\x64\Release\ilc\in\LiveCharts.Uwp.dll"
+"C:\Users\miyuki\source\repos\color_test\color_test\obj\x64\Release\ilc\in\Microsoft.Xaml.Interactions.dll"
+"C:\Users\miyuki\source\repos\color_test\color_test\obj\x64\Release\ilc\in\Microsoft.Xaml.Interactivity.dll"
+/Lib:"C:\Users\miyuki\source\repos\color_test\color_test\obj\x64\Release\ilc\in"
+/Lib:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.net.native.compiler\2.2.10-rel-29722-00\tools\x64\ilc\lib\Private"
+/WinMD:"C:\Users\miyuki\source\repos\color_test\color_test\obj\x64\Release\ilc\in\WinMetadata\Windows.winmd"
+/VSTelemetrySessionSettings:"{\"IsOptedIn\":true,\"HostName\":\"Dev14\",\"AppInsightsInstrumentationKey\":\"f144292e-e3b2-4011-ac90-20e5c03fbce5\",\"AsimovInstrumentationKey\":\"AIF-312cbd79-9dbb-4c48-a7da-3cc2a931cb70\",\"AppId\":1001,\"UserId\":\"a89394f2-28d9-4615-9b8e-1552a5792080\",\"Id\":\"b5554434-dc30-4171-a750-b2487f794396\",\"ProcessStartTime\":637628795455623620}"
+/RdXmlPath:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\microsoft.net.native.compiler\2.2.10-rel-29722-00\tools\LibraryXML"
+/RunOnlyPreDR
