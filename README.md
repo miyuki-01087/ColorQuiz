@@ -1,4 +1,4 @@
-# ColorQuiz
+# color_test
 
 色彩検定2級の色名暗記支援ソフト
 
