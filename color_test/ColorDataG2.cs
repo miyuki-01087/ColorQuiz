@@ -158,7 +158,7 @@ namespace color_test
             rgbMap.Add(53, new byte[] { 209, 186, 218 }); // ライラック
             rgbMap.Add(54, new byte[] { 137, 91, 138 }); // 古代紫
             /*  ここからが出題範囲7つめ  */
-            rgbMap.Add(55, new byte[] { 169, 158, 147 }); // 茶鼠
+            rgbMap.Add(55, new byte[] { 169, 158    , 147 }); // 茶鼠
             rgbMap.Add(56, new byte[] { 136, 142, 126 }); // 利休鼠
             rgbMap.Add(57, new byte[] { 175, 175, 176 }); // 銀鼠
             rgbMap.Add(58, new byte[] { 111, 81, 76 }); // 煤竹色

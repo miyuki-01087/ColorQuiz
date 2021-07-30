@@ -1,0 +1,2 @@
+MainPackage=C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Release\color_test_1.0.1.0_x86.msix
+SymbolPackage=C:\Users\miyuki\source\repos\color_test\color_test\obj\x86\Release\Symbols\color_test_1.0.1.0_x86.appxsym
