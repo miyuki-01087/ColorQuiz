@@ -3,6 +3,7 @@ using Windows.UI.Xaml.Controls;
 using LiveCharts;
 using LiveCharts.Uwp;
 using Windows.UI;
+using System.Collections.Generic;
 
 
 namespace color_test
@@ -76,13 +77,13 @@ namespace color_test
             int maxLengthOfScore = scoreData.GetLengthOfStorage();
             LC_Graph.AxisX.Clear();
             LC_Graph.AxisY.Clear();
-            LC_Graph.AxisX.Add(new Axis { Title = "受験回数", FontSize = 20 , MaxValue = maxLengthOfScore });
+            LC_Graph.AxisX.Add(new Axis { Title = "受験回数", FontSize = 20 ,MinValue=1, MaxValue = maxLengthOfScore});
             LC_Graph.AxisY.Add(new Axis { Title = "正解数", FontSize = 20, MinValue = 0, MaxValue = 61});
 
             for (int i = 0; i < seriesCollection.Count; i++) 
             {
                 seriesCollection[i].Values.Clear();
-
+                seriesCollection[i].Values.Add(0L);
                 for (int points = 0; points < yData.Length; points++)
                 {
                     seriesCollection[i].Values.Add(yData[points]);

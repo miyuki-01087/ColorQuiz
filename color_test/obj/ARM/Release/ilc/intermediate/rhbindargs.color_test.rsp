@@ -1,0 +1,16 @@
+﻿/osver:6.2
+/appcontainer
+"/runtime:mrt100_app"
+/eh:clr
+/pdb
+"/nativeLink:C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-arm.microsoft.net.native.compiler\2.2.10-rel-29722-00\tools\ARM\ilc\lib\Native\vmath.lib"
+/customImports
+/methodBodyFolding
+"C:\Users\miyuki\source\repos\color_test\color_test\obj\ARM\Release\ilc\intermediate\MDIL\color_test.mdilexe"
+"/i:C:\Users\miyuki\source\repos\color_test\color_test\obj\ARM\Release\ilc\intermediate\MDIL"
+"/out:C:\Users\miyuki\source\repos\color_test\color_test\obj\ARM\Release\ilc\intermediate\Native\color_test.exe"
+"/pdbAltPath:C:\Users\miyuki\source\repos\color_test\color_test\bin\ARM\Release\ilc"
+"/res:C:\Users\miyuki\source\repos\color_test\color_test\obj\ARM\Release\ilc\intermediate\Native.res"
+"/i:C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-arm.microsoft.net.native.sharedlibrary\2.2.8-rel-29722-00\tools\SharedLibrary\ret\MDIL"
+/shimexe
+"/classlib:SharedLibrary"
