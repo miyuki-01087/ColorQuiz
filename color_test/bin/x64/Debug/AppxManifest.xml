@@ -7,7 +7,7 @@
 
     パッケージ マニフェスト ファイルの詳細については、http://go.microsoft.com/fwlink/?LinkID=241727 を参照してください
   -->
-  <Identity Name="c2626f48-3a7d-412c-a635-7a96d3c8c915" Publisher="CN=miyuki" Version="1.0.0.0" ProcessorArchitecture="x64" />
+  <Identity Name="c2626f48-3a7d-412c-a635-7a96d3c8c915" Publisher="CN=miyuki" Version="1.0.2.0" ProcessorArchitecture="x64" />
   <mp:PhoneIdentity PhoneProductId="c2626f48-3a7d-412c-a635-7a96d3c8c915" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>color_test</DisplayName>
@@ -25,7 +25,7 @@
   <Applications>
     <Application Id="App" Executable="color_test.exe" EntryPoint="color_test.App">
       <uap:VisualElements DisplayName="color_test" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="color_test" BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png" />
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
     </Application>
@@ -45,7 +45,7 @@
     <build:Item Name="TargetFrameworkMoniker" Value=".NETCore,Version=v5.0" />
     <build:Item Name="VisualStudio" Version="16.0" />
     <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Community 2019" />
-    <build:Item Name="OperatingSystem" Version="10.0.19041.985 (WinBuild.160101.0800)" />
+    <build:Item Name="OperatingSystem" Version="10.0.19041.1100 (WinBuild.160101.0800)" />
     <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="16.0.31320.204" />
     <build:Item Name="ProjectGUID" Value="{B0322DCB-0797-4213-9190-1C859B49DA0A}" />
     <build:Item Name="OptimizingToolset" Value="None" />
