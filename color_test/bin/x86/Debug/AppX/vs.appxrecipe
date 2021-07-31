@@ -19,24 +19,24 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>63AF3EAA7949EDE27E8F0E23BF1A2AD64A7890C396AF684E35688021192EF5BB</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>c2626f48-3a7d-412c-a635-7a96d3c8c915_1.0.1.0_x86__p3jkct44f8hat</RegisteredPackageMoniker>
+    <RegisteredManifestChecksum>28A4FBEEAE29FFB0E74C58857E06C0D36AEB42145BDC5D00C05163778641304A</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>c2626f48-3a7d-412c-a635-7a96d3c8c915_1.0.3.0_x86__p3jkct44f8hat</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>c2626f48-3a7d-412c-a635-7a96d3c8c915_p3jkct44f8hat!App</RegisteredUserModeAppID>
     <RegisteredPackageID>c2626f48-3a7d-412c-a635-7a96d3c8c915</RegisteredPackageID>
     <RegisteredPackagePublisher>CN=miyuki</RegisteredPackagePublisher>
-    <RegisteredVersion>1.0.1.0</RegisteredVersion>
+    <RegisteredVersion>1.0.3.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-07-30T11:18:05.539</Modified>
+      <Modified>2021-07-31T07:59:19.938</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\color_test.exe">
       <PackagePath>entrypoint\color_test.exe</PackagePath>
-      <Modified>2021-07-30T11:18:03.600</Modified>
+      <Modified>2021-07-31T07:59:18.939</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\.nuget\packages\livecharts\0.8.0\lib\portable-net40+sl5+win8+wp8+wpa81\LiveCharts.dll">
       <PackagePath>LiveCharts.dll</PackagePath>
@@ -358,11 +358,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2021-07-30T10:54:03.670</Modified>
+      <Modified>2021-07-31T07:16:34.751</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Debug\Core\color_test.exe">
       <PackagePath>color_test.exe</PackagePath>
-      <Modified>2021-07-30T11:18:05.534</Modified>
+      <Modified>2021-07-31T07:59:19.934</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

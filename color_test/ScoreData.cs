@@ -53,7 +53,8 @@ namespace color_test
                 CreateContainer();
             }
 
-            for (int i=0; i<LENGTH_OF_STORAGE; i++)
+            // 空いている最小のインデックスでスコアを格納する
+            for (int i=0; true; i++)
             {
                 if(localSettings.Containers["scoreContainer"].Values[i.ToString()] == null)
                 {
@@ -80,16 +81,38 @@ namespace color_test
                 }
             }
             else
-            {
-                for (int i = 0; i < LENGTH_OF_STORAGE; i++)
+            { // スコアのデータ数が20コ以下の場合
+                bool isUnder20 = localSettings.Containers["scoreContainer"].Values["20"] == null;
+                var tmp = localSettings.Containers["scoreContainer"];
+                if (isUnder20)
                 {
-                    if (localSettings.Containers["scoreContainer"].Values[i.ToString()] != null)
+                    for (int i = 0; i < LENGTH_OF_STORAGE; i++)
                     {
-                        scores[i] = localSettings.Containers["scoreContainer"].Values[i.ToString()].ToString();
+                        if (localSettings.Containers["scoreContainer"].Values[i.ToString()] != null)
+                        {
+                            scores[i] = localSettings.Containers["scoreContainer"].Values[i.ToString()].ToString();
+                        }
+                        else
+                        {
+                            scores[i] = null;
+                        }
                     }
-                    else
+                }
+                else
+                { // スコアのデータが21以上の場合、末尾から20コのデータを格納する
+                    int counter = 20;
+                    while (true)
                     {
-                        scores[i] = null;
+                        if (localSettings.Containers["scoreContainer"].Values[counter.ToString()] == null)
+                        {
+                            break;
+                        }
+                        counter++;
+                    }
+                    for (int i = 0; i < LENGTH_OF_STORAGE; i++)
+                    {
+                        int offset = counter - LENGTH_OF_STORAGE;
+                        scores[i] = localSettings.Containers["scoreContainer"].Values[(i+offset).ToString()].ToString();
                     }
                 }
             }
