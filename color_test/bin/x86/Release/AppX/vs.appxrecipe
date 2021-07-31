@@ -19,18 +19,18 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Release\AppX</LayoutDir>
-    <RegisteredManifestChecksum>F35BAE77CE3EECA01F8D70AA9DCEBB57A5AC398E38143AE5121649E7AF60A04B</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>c2626f48-3a7d-412c-a635-7a96d3c8c915_1.0.0.0_x86__p3jkct44f8hat</RegisteredPackageMoniker>
+    <RegisteredManifestChecksum>C431AFF617055C584E99E94A732B0ED245880D87E3EDF9F259545E763D4A155E</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>c2626f48-3a7d-412c-a635-7a96d3c8c915_1.0.3.0_x86__p3jkct44f8hat</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>c2626f48-3a7d-412c-a635-7a96d3c8c915_p3jkct44f8hat!App</RegisteredUserModeAppID>
     <RegisteredPackageID>c2626f48-3a7d-412c-a635-7a96d3c8c915</RegisteredPackageID>
     <RegisteredPackagePublisher>CN=miyuki</RegisteredPackagePublisher>
-    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <RegisteredVersion>1.0.3.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Release\ilc\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-07-26T07:13:15.037</Modified>
+      <Modified>2021-07-31T07:14:31.078</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -302,19 +302,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Release\ilc\color_test.dll">
       <PackagePath>color_test.dll</PackagePath>
-      <Modified>2021-07-26T07:13:12.016</Modified>
+      <Modified>2021-07-31T07:14:30.448</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Release\ilc\color_test.exe">
       <PackagePath>color_test.exe</PackagePath>
-      <Modified>2021-07-26T07:13:13.637</Modified>
+      <Modified>2021-07-31T07:14:31.061</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Release\ilc\color_test.pdb">
       <PackagePath>color_test.pdb</PackagePath>
-      <Modified>2021-07-26T07:13:12.847</Modified>
+      <Modified>2021-07-31T07:14:31.060</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miyuki\source\repos\color_test\color_test\bin\x86\Release\ilc\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2021-07-26T07:11:42.779</Modified>
+      <Modified>2021-07-30T11:33:11.227</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
